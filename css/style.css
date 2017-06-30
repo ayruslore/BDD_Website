@@ -1,0 +1,21 @@
+.tabcontent{
+    display: none;
+}
+
+.removeButton{
+  display:block;
+  position:absolute;
+  width:36px;
+  height:36px;
+  top:0;
+  right:0;
+  font-size:20px;
+  color:#606060;
+  text-align:center;
+  text-decoration:none;
+  border:2px solid #ededed;
+  border-radius:4px;
+  line-height:33px
+}
+
+.removeButton:hover{color:#ef0568}
