@@ -259,7 +259,9 @@ jQuery(document).ready(function($) {
 		e.preventDefault();
 		//exp
 		var id_=$button.parent().find('.quantity').attr('name');
-		if(newVal!=1) syncValues(id_, newVal);
+		getData2();
+		//if(newVal!=1)
+		syncValues(id_, newVal);
 	});
 
 	// Waves Effect (on Buttons)
