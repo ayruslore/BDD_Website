@@ -98,7 +98,7 @@
                 <li><a href="#menu" onclick="openCourse(event, 'course2')">Tank Up On Rice <sup>4</sup></a></li>
                 <li><a href="#menu" onclick="openCourse(event, 'course3')">Piping Breads <sup>3</sup></a></li>
                 <li><a href="#menu" onclick="openCourse(event, 'course4')">Riveting Desserts <sup>3</sup></a></li>
-                <li><a href="#menu" onclick="openCourse(event, 'course5')">Super Coolants <sup>1</sup></a></li>
+                <li><a href="#menu" onclick="openCourse(event, 'course5')">Super Coolants <sup>2</sup></a></li>
                 <li><a href="#menu" onclick="openCourse(event, 'course6')">Top Gear Combos <sup>6</sup></a></li>
                 <li><a href="#menu" onclick="openCourse(event, 'course7')">Speedy Combos <sup>7</sup></a></li>
                 <li><a href="#menu" onclick="openCourse(event, 'course8')">Full Throttle Starters <sup>4</sup></a></li>
@@ -1154,7 +1154,7 @@
                 <h3 class="toolbar-title">Cart subtotal:</h3>
                 <h4 id="amt" class="amount">&#8377;0</h4>
                 <p class="text-sm text-gray">* Note: This amount does not include taxes and delivery charges. You will be given the final amount on checkout.</p>
-                <a onclick="checkout()" href="payment.html" class="btn btn-primary btn-block waves-effect waves-light space-top-none">Checkout</a>
+                <a onclick="checkout(); finalSend();" href="payment.html" class="btn btn-primary btn-block waves-effect waves-light space-top-none">Checkout</a>
               </aside>
             </div><!-- .col-md-3.col-sm-4 -->
           </div><!-- .row -->
@@ -1186,6 +1186,7 @@
   <script src="js/scripts.js"></script>
   <script type="text/javascript" src="js/tabs.js"></script>
   <script type="text/javascript" src="js/removeItem.js"></script>
+  <script type="text/javascript" src="js/sendingData.js"></script>
 
 
 </body><!-- <body> -->

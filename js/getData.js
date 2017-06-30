@@ -164,6 +164,7 @@ function getData2(){
   document.getElementById("item_qty2").innerHTML="Currently "+items+" items are in the cart.";
   //console.log("data retrieved");
   document.getElementById("display").innerHTML=xyx;
+  sender(dish, price, qty);
 }
 
 function checkout(){
