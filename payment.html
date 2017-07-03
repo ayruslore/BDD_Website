@@ -71,17 +71,6 @@
           </h1>
           <div class="row padding-top">
 
-            <!-- Cart -->
-            <div class="col-sm-8 padding-bottom-2x">
-              <p class="text-sm">
-                <span id="item_qty2" class="text-gray">Your cart</span>
-              </p>
-              <div class="shopping-cart">
-
-              <section id='display'>* CART DISPLAYED HERE *</section>
-
-              </div><!-- .shopping-cart -->
-           </div><!-- .col-sm-8 -->
 
             <!-- Sidebar -->
             <div class="col-md-3 col-md-offset-1 col-sm-4 padding-bottom-2x">
@@ -89,8 +78,9 @@
                 <h3 class="toolbar-title">Pay Using</h3>
                 <h4 id="amt" class="amount">&#8377;0</h4>
                 <p class="text-sm text-gray">Choose one of the following as your payment methods.</p>
-                <a class="btn btn-primary btn-block waves-effect waves-light space-top-none">Razorpay</a>
+                <a id="rzp-button1" class="btn btn-primary btn-block waves-effect waves-light space-top-none">Razorpay</a>
                 <a class="btn btn-primary btn-block waves-effect waves-light space-top-none">Paytm</a>
+                <a class="btn btn-primary btn-block waves-effect waves-light space-top-none">Cash on Delivery</a>
               </aside>
             </div><!-- .col-md-3.col-sm-4 -->
           </div><!-- .row -->
@@ -110,10 +100,9 @@
   <script src="js/vendor/icheck.min.js"></script>
   <script src="js/vendor/owl.carousel.min.js"></script>
   <script src="js/vendor/magnific-popup.min.js"></script>
-  <script type="text/javascript" src="js/getData.js"></script>
   <script src="js/scripts.js"></script>
-  <script type="text/javascript" src="js/tabs.js"></script>
-  <script type="text/javascript" src="js/removeItem.js"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="js/razorpay.js"></script>
 
 
 </body><!-- <body> -->
