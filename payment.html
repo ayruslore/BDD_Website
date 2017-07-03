@@ -64,30 +64,33 @@
           <span>Baba</span><span class="text-gray">da</span><span>Dhaba</span>
           </h1>
             <div class="row padding-top">
+
               <!-- Checkout Form -->
               <div class="col-sm-8 padding-bottom">
+                <p class="text-gray text-sm">Fill in the following details</p>
                 <div class="row">
                   <div class="col-sm-6">
-                    <input type="text" class="form-control" name="f_name" placeholder="First name" required>
-                    <input type="email" class="form-control" name="email" placeholder="Email">
+                    <input type="text" class="form-control" name="f_name" placeholder="First name" required/>
+                    <input type="email" class="form-control" name="email" placeholder="Email" required/>
                   </div>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control" name="l_name" placeholder="Last name" required>
-                    <input type="tel" class="form-control" name="phone" placeholder="Phone" required>
+                    <input type="text" class="form-control" name="l_name" placeholder="Last name" required/>
+                    <input type="tel" class="form-control" name="phone" placeholder="Phone" required/>
                   </div>
                 </div><!-- .row -->
-                <input type="text" class="form-control" name="address" placeholder="Address">
+                <input onkeyup="openCourse(event, 'pay')" type="text" class="form-control" name="address" placeholder="Address" required/>
+                <p class="text-gray text-sm">Press Enter to proceed.</p>
               </div><!-- .col-sm-8 -->
 
             <!-- Sidebar -->
-            <div class="col-md-3 col-md-offset-1 col-sm-4 padding-bottom-2x">
+            <div id="pay" class="col-md-3 col-md-offset-1 col-sm-4 padding-bottom-2x tabcontent">
               <aside>
                 <h3 class="toolbar-title">Pay Using</h3>
                 <h4 id="amt" class="amount">&#8377;0</h4>
                 <p class="text-sm text-gray">Choose one of the following as your payment methods.</p>
                 <a type="submit" id="rzp-button1" class="btn btn-primary btn-block waves-effect waves-light space-top-none">Razorpay</a>
-                <a type="submit" class="btn btn-primary btn-block waves-effect waves-light space-top-none">Paytm</a>
-                <a type="submit" class="btn btn-primary btn-block waves-effect waves-light space-top-none">Cash on Delivery</a>
+                <a class="btn btn-primary btn-block waves-effect waves-light space-top-none">Paytm</a>
+                <a class="btn btn-primary btn-block waves-effect waves-light space-top-none">Cash on Delivery</a>
               </aside>
             </div><!-- .col-md-3.col-sm-4 -->
           </div><!-- .row -->
@@ -108,14 +111,17 @@
   <script src="js/vendor/owl.carousel.min.js"></script>
   <script src="js/vendor/magnific-popup.min.js"></script>
   <script src="js/scripts.js"></script>
-  <script src="js/getData.js"></script>
+  <script src="js/scripts.js"></script>
+  <script src="js/tabs.js"></script>
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <script src="js/razorpay.js"></script>
 
 <script>
   document.getElementById('amt').innerHTML=sessionStorage.getItem('total');
-  if(Number(sessionStorage.getItem('total').slice(1))==0)
+  if(Number(sessionStorage.getItem('total').slice(1))==0){
     window.location="index.html";
+    window.alert("Can\'t checkout with nothing in cart. Close webview to exit");
+  }
 </script>
 
 </body><!-- <body> -->

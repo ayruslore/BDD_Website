@@ -181,7 +181,6 @@ function removeItem(obj){
 }
 
 function syncValues(v1, val){
-  //document.getElementById("display").innerHTML=v1;
   document.getElementsByName(v1)[0].value=val;
   document.getElementsByName(v1)[1].value=val;
   getData2();

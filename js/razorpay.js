@@ -6,7 +6,7 @@ document.getElementById('rzp-button1').onclick = function(e){
     "description": "Payment for your food order",
     "image": "",
     "handler": function (response){
-      alert(response.razorpay_payment_id);
+      alert("Close webview to proceed!");//response.razorpay_payment_id);
     },
     "prefill": {
       "name": document.getElementsByName('f_name')[0].value+" "+document.getElementsByName('l_name')[0].value,
@@ -21,6 +21,6 @@ document.getElementById('rzp-button1').onclick = function(e){
     }
   };
   var rzp1 = new Razorpay(options);
-    rzp1.open();
-    e.preventDefault();
+  rzp1.open();
+  e.preventDefault();
 }
