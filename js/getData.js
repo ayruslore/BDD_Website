@@ -9,8 +9,9 @@ function getData2(){
   var c1_names=["Pindi Chole", "Murg Kali Mirch", "Paneer Makhanwala", "Paneer Lababdar", "Saagwala Paneer", "Subzi Meloni", "Dal Makhani", "Dal Sath Salam", "Chicken Lababdar", "Chicken Makhanwala", "Mutton Rogan Josh"];
   var c1_price=[120, 250, 250, 250, 250, 180, 160, 120, 250, 250, 300];
   var c1_image=["img/menu/Power-Up-Main-Course/Pindi-Chole.jpg", "img/menu/Power-Up-Main-Course/Murg-Kali-Mirch.jpg", "img/menu/Power-Up-Main-Course/Paneer-Makhanwala.jpg", "img/menu/Power-Up-Main-Course/Paneer-Lababdar.jpg", "img/menu/Power-Up-Main-Course/Saagwala-Paneer.jpg", "img/menu/Power-Up-Main-Course/Subzi-Meloni.jpg", "img/menu/Power-Up-Main-Course/Dal-Makhani.jpg", "img/menu/Power-Up-Main-Course/Dal-Sath-Salam.jpg", "img/menu/Power-Up-Main-Course/Chicken-Lababdar.jpg", "img/menu/Power-Up-Main-Course/Chicken-Makhanwala.jpg", "img/menu/Power-Up-Main-Course/Mutton-Rogan-Josh.jpg"];
-  var c1_list=[Number(document.getElementsByName('c1_1')[0].value), Number(document.getElementsByName('c1_2')[0].value), Number(document.getElementsByName('c1_3')[0].value), Number(document.getElementsByName('c1_4')[0].value), Number(document.getElementsByName('c1_5')[0].value), Number(document.getElementsByName('c1_6')[0].value),
-      Number(document.getElementsByName('c1_7')[0].value), Number(document.getElementsByName('c1_8')[0].value), Number(document.getElementsByName('c1_9')[0].value), Number(document.getElementsByName('c1_10')[0].value), Number(document.getElementsByName('c1_11')[0].value)];
+  var c1_list=[Number(document.getElementsByName('c1_1')[0].value), Number(document.getElementsByName('c1_2')[0].value), Number(document.getElementsByName('c1_3')[0].value), Number(document.getElementsByName('c1_4')[0].value), Number(document.getElementsByName('c1_5')[0].value),
+    Number(document.getElementsByName('c1_6')[0].value), Number(document.getElementsByName('c1_7')[0].value), Number(document.getElementsByName('c1_8')[0].value), Number(document.getElementsByName('c1_9')[0].value), Number(document.getElementsByName('c1_10')[0].value),
+    Number(document.getElementsByName('c1_11')[0].value)];
   for(var i=0; i<c1_list.length; i++){
     if(c1_list[i]!=0){
       field.push("c1_"+(i+1));
@@ -164,11 +165,19 @@ function getData2(){
   document.getElementById("item_qty2").innerHTML="Currently "+items+" items are in the cart.";
   //console.log("data retrieved");
   document.getElementById("display").innerHTML=xyx;
-  sender(dish, price, qty);
+  sender(dish, qty);
 }
 
 function checkout(){
-  window.alert("Close this webview/tab to proceed.");
+  //window.alert("Close this webview/tab to proceed.");
+  sessionStorage.setItem('total', document.getElementById("amt").innerHTML);
+}
+
+function removeItem(obj){
+  syncValues(v, 0);
+  obj.parentNode.parentNode.removeChild(obj.parentNode);
+  v=(obj.parentNode.childNodes[1].childNodes[2].childNodes[1].name);//((' ' + obj.parentElement.className + ' ').indexOf("quantity") > -1);//(obj.parentElement);//find('.quantity')
+  //getData2();
 }
 
 function syncValues(v1, val){
@@ -176,4 +185,22 @@ function syncValues(v1, val){
   document.getElementsByName(v1)[0].value=val;
   document.getElementsByName(v1)[1].value=val;
   getData2();
+}
+
+function getURL(){
+  var str = window.location.href;
+  var uid = "";
+  for (var i = 0; i<=str.length; i++){
+        //console.log(str.charAt(i));
+        if (str.charAt(i) == "?")
+        {
+          for ( var j = i + 5; j<=(i+19); j++){
+            //console.log(str.charAt(j));
+            uid = uid + str.charAt(j);
+          }
+          break;
+        }
+      }
+  //console.log(str);
+  //console.log(uid);
 }

@@ -58,14 +58,14 @@
           "Kashmiri Mini Combo (Non Veg)": ["Rs. 220", "Non Veg"],
           "Pindi Chole Combo": ["Rs. 120", "Veg"]
       },
-      "-Full Throttle Starters": {
+      "Full Throttle Starters": {
           "Assorted Veg Tikki's": ["Rs. 200", "Veg"],
           "Paneer Tikka": ["Rs. 220", "Veg"],
           "Hariyali Chicken Kebab": ["Rs. 220", "Non Veg"],
           "Malai Chicken Kebab": ["Rs. 220", "Non Veg"],
           "Mutton Seekh Kebab":["Rs. 260", "Non Veg"]
       },
-      "-Blazing Rolls": {
+      "Blazing Rolls": {
           "Paneer Tikka Roll": ["Rs. 140", "Veg"],
           "Chicken Tikka Roll": ["Rs. 160", "Non Veg"],
           "Mutton Seekh Roll": ["Rs. 200", "Non Veg"]

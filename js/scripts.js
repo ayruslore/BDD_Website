@@ -59,7 +59,7 @@ jQuery(document).ready(function($) {
 	if($('.page-preloading').length) {
 		$('a:not([href^="#"])').on('click', function(e) {
 	    if($(this).attr('class') !== 'video-popup-btn' && $(this).attr('class') !== 'gallery-item' && $(this).attr('class') !== 'ajax-post-link' && $(this).attr('class') !== 'read-more ajax-post-link') {
-				console.log($(this).attr('class'));
+				//console.log($(this).attr('class'));
 	      e.preventDefault();
 	      var linkUrl = $(this).attr('href');
 	      $('.page-preloading').addClass('link-clicked');
@@ -260,8 +260,7 @@ jQuery(document).ready(function($) {
 		//exp
 		var id_=$button.parent().find('.quantity').attr('name');
 		getData2();
-		//if(newVal!=1)
-		syncValues(id_, newVal);
+		if(newVal!=0) syncValues(id_, newVal);
 	});
 
 	// Waves Effect (on Buttons)
@@ -351,7 +350,7 @@ jQuery(document).ready(function($) {
 			success: successFn,
 			error: errorFn,
 			complete: function(xhr, status) {
-				console.log('Request is complete!');
+				//console.log('Request is complete!');
 			}
 		});
 	}
@@ -360,14 +359,14 @@ jQuery(document).ready(function($) {
 	function successFn(result, status) {
 		postContent.prepend(result);
 		postContentWrap.addClass('loaded');
-		console.log('Data has been received!');
+		//console.log('Data has been received!');
 	}
 
 	// Error
 	function errorFn(xhr, status, strErr) {
 		postContent.prepend('<p>' + strErr + '</p>');
 		postContentWrap.addClass('loaded');
-		console.log(strErr);
+		//console.log(strErr);
 	}
 
 	// Open Post

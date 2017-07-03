@@ -1,18 +1,13 @@
 var cartJSON;
 
-function sender(dish, price, qty){
-  cartJSON='{"cart:"[';
-  for(var i=0; i<dish.length; i++){
-    cartJSON+='{"dish":"'+dish[i]+'", "price":"'+price[i]+'", "quantity":"'+qty[i]+'"}';
-    if(i!=dish.length-1) cartJSON+=',';
-  }
-  cartJSON+=']}';
-  //var cart=JSON.parse(cartJSON);
-  //var cart=cartJSON;
-  console.log(cartJSON);
+function sender(dish, qty){
+  cartJSON={};
+  for(var i=0; i<dish.length; i++)
+    cartJSON[dish[i].replace(/ /g, '_').toLowerCase()]=qty[i];
+  cartJSON=JSON.stringify(cartJSON);
+  //console.log(cartJSON);
 }
 
 function finalSend(){
-  location.href="https://9c635be9.ngrok.io/"+"?token=websitesubscriptions"+"&payload="+cartJSON;
-  console.log("TMKC");
+  //location.href="https://2ab7681f.ngrok.io/"+"cart/1234567/replace/"+cartJSON;
 }
