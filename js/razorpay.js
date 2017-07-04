@@ -24,3 +24,7 @@ document.getElementById('rzp-button1').onclick = function(e){
   rzp1.open();
   e.preventDefault();
 }
+
+function done(){
+  alert("Close webview to proceed!");
+}

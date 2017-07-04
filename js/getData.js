@@ -174,9 +174,10 @@ function checkout(){
 }
 
 function removeItem(obj){
-  syncValues(v, 0);
-  obj.parentNode.parentNode.removeChild(obj.parentNode);
   v=(obj.parentNode.childNodes[1].childNodes[2].childNodes[1].name);//((' ' + obj.parentElement.className + ' ').indexOf("quantity") > -1);//(obj.parentElement);//find('.quantity')
+  syncValues(v, 0);
+  finalSend();
+  //obj.parentNode.parentNode.removeChild(obj.parentNode);
   //getData2();
 }
 
@@ -184,22 +185,4 @@ function syncValues(v1, val){
   document.getElementsByName(v1)[0].value=val;
   document.getElementsByName(v1)[1].value=val;
   getData2();
-}
-
-function getURL(){
-  var str = window.location.href;
-  var uid = "";
-  for (var i = 0; i<=str.length; i++){
-        //console.log(str.charAt(i));
-        if (str.charAt(i) == "?")
-        {
-          for ( var j = i + 5; j<=(i+19); j++){
-            //console.log(str.charAt(j));
-            uid = uid + str.charAt(j);
-          }
-          break;
-        }
-      }
-  //console.log(str);
-  //console.log(uid);
 }

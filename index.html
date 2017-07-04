@@ -6,10 +6,6 @@
   <meta charset="utf-8">
   <title>Baba da Dhaba</title>
 
-  <!--SEO Meta Tags-->
-  <meta name="keywords" content="shop, e-commerce, modern, minimalist style, responsive, online store, business, mobile, blog, bootstrap, html5, css3,
-    jquery, js, gallery, slider, touch, creative, clean" />
-
   <!--Mobile Specific Meta Tag-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
@@ -87,19 +83,19 @@
         <!-- Main Navigation -->
         <nav class="main-navigation">
           <ul class="menu">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="#top">Home</a></li>
             <li class="menu-item-has-children">
               <a href="#">Menu</a>
               <ul class="sub-menu">
-                <li><a href="#">New Launch <sup>6</sup></a></li>
-                <li><a href="#menu" onclick="openCourse(event, 'course1')">Power Up Main Course <sup>9</sup></a></li>
+              <!---  <li><a href="#">New Launch <sup>6</sup></a></li> -->
+                <li><a href="#menu" onclick="openCourse(event, 'course1')">Power Up Main Course <sup>11</sup></a></li>
                 <li><a href="#menu" onclick="openCourse(event, 'course2')">Tank Up On Rice <sup>4</sup></a></li>
-                <li><a href="#menu" onclick="openCourse(event, 'course3')">Piping Breads <sup>3</sup></a></li>
+                <li><a href="#menu" onclick="openCourse(event, 'course3')">Piping Breads <sup>2</sup></a></li>
                 <li><a href="#menu" onclick="openCourse(event, 'course4')">Riveting Desserts <sup>3</sup></a></li>
                 <li><a href="#menu" onclick="openCourse(event, 'course5')">Super Coolants <sup>2</sup></a></li>
                 <li><a href="#menu" onclick="openCourse(event, 'course6')">Top Gear Combos <sup>6</sup></a></li>
-                <li><a href="#menu" onclick="openCourse(event, 'course7')">Speedy Combos <sup>7</sup></a></li>
-                <li><a href="#menu" onclick="openCourse(event, 'course8')">Full Throttle Starters <sup>4</sup></a></li>
+                <li><a href="#menu" onclick="openCourse(event, 'course7')">Speedy Combos <sup>8</sup></a></li>
+                <li><a href="#menu" onclick="openCourse(event, 'course8')">Full Throttle Starters <sup>5</sup></a></li>
                 <li><a href="#menu" onclick="openCourse(event, 'course9')">Blazing Rolls <sup>3</sup></a></li>
               </ul>
             </li>
@@ -171,8 +167,7 @@
 
                   <!-- Tags Widget -->
                   <div class="widget widget-tags">
-                    <!---<a href="#">All <sup>50</sup></a>-->
-                    <a href="#">New Launch <sup>6</sup></a>
+                    <!--- <a href="#">New Launch <sup>6</sup></a> -->
                     <a href="#" id="default" onclick="openCourse(event, 'course1')">Power Up Main Course <sup>11</sup></a>
                     <a href="#" onclick="openCourse(event, 'course2')">Tank Up On Rice <sup>4</sup></a>
                     <a href="#" onclick="openCourse(event, 'course3')">Piping Breads <sup>2</sup></a>
@@ -1189,6 +1184,7 @@
 </body><!-- <body> -->
   <script>
   window.onload(getURL());
+  window.onload(populate());
   document.getElementById("default").click();
   </script>
 
