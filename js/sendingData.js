@@ -32,7 +32,7 @@ function finalSend(){
 
   $.ajax({
     type: "GET",
-    url: "https://8d807a5f.ngrok.io/cart/"+uid+"/replace/"+cartJSON,
+    url: "https://50117a46.ngrok.io/cart/"+uid+"/replace/"+cartJSON,
     data: "",//cartJSON,
     success: function(data){
       //console.log('Success!');
@@ -46,7 +46,7 @@ function finalSend(){
 function populate(){
   $.ajax({
     type: "GET",
-    url: "https://8d807a5f.ngrok.io/cart/"+uid+"/show",
+    url: "https://50117a46.ngrok.io/cart/"+uid+"/show",
     /*//
     headers: {'Access-Control-Allow-Origin': '*'},
     crossDomain: true,
