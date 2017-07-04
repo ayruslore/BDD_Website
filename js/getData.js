@@ -166,6 +166,7 @@ function getData2(){
   //console.log("data retrieved");
   document.getElementById("display").innerHTML=xyx;
   sender(dish, qty);
+  finalSend();
 }
 
 function checkout(){

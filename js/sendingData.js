@@ -32,7 +32,7 @@ function finalSend(){
 
   $.ajax({
     type: "GET",
-    url: "https://2ab7681f.ngrok.io/cart/"+uid+"/replace/"+cartJSON,
+    url: "https://8d807a5f.ngrok.io/cart/"+uid+"/replace/"+cartJSON,
     data: "",//cartJSON,
     success: function(data){
       //console.log('Success!');
@@ -46,15 +46,21 @@ function finalSend(){
 function populate(){
   $.ajax({
     type: "GET",
-    url: "https://2ab7681f.ngrok.io/cart/"+uid+"/show",
-    dataType: "json",
+    url: "https://8d807a5f.ngrok.io/cart/"+uid+"/show",
+    /*//
+    headers: {'Access-Control-Allow-Origin': '*'},
+    crossDomain: true,
+    dataType: "jsonp",
+    //*/
     success: function(data){
       function toTitleCase(str){
         return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
       }
-      //console.log(JSON.stringify(data));
+      data=toTitleCase(data.replace(/_/g, ' '));
+      data=JSON.parse(data);
+      //console.log(data);
       for(var key in data){
-        //console.log(toTitleCase(key.replace(/_/g, ' ')));
+        //console.log(key);//toTitleCase(key.replace(/_/g, ' ')));
         var dishes=["Pindi Chole", "Murg Kali Mirch", "Paneer Makhanwala", "Paneer Lababdar", "Saagwala Paneer", "Subzi Meloni", "Dal Makhani", "Dal Sath Salam", "Chicken Lababdar", "Chicken Makhanwala", "Mutton Rogan Josh", "Steamed Rice", "Jeera Rice", "Chicken Biryani", "Mutton Biryani",
           "Onion Kulcha", "Wheat Tawa Roti", "Phirni", "Kheer", "B&W Chocolate Cake (Eggless)", "Lassi", "Water", "Dilli Combo (Veg)", "Amritsari Combo (Veg)", "Lucknowi Combo (Veg)", "Dilli Combo (Non Veg)", "Amritsari Combo (Non Veg)", "Kashmiri Combo (Non Veg)", "Dilli Mini Combo (Veg)",
           "Lucknowi Mini Combo (Veg)", "Amritsari Mini Combo (Veg)", "Dal Makhani Mini Combo (Veg)", "Dilli Mini Combo (Non Veg)", "Amritsari Mini Combo (Non Veg)", "Kashmiri Mini Combo (Non Veg)", "Pindi Chole Combo", "Assorted Veg Tikkis", "Paneer Tikka", "Hariyali Chicken Kebab",
