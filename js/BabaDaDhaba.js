@@ -1,4 +1,4 @@
-{
+var DATA={
   "Courses": {
       "New Launch":{
         "Punjabi Aloo ka Paratha": ["Veg", "Rs. 60"],
@@ -52,7 +52,7 @@
           "Dilli Mini Combo (Veg)": ["Rs. 160", "Veg"],
           "Lucknowi Mini Combo (Veg)": ["Rs. 160", "Veg"],
           "Amritsari Mini Combo (Veg)": ["Rs. 160", "Veg"],
-          "Dal Makhani Mini Combo (Veg)": ["Rs. 99", "Veg"],
+          "Dal Makhani Mini Combo": ["Rs. 99", "Veg"],
           "Dilli Mini Combo (Non Veg)": ["Rs. 160", "Non Veg"],
           "Amritsari Mini Combo (Non Veg)": ["Rs. 160", "Non Veg"],
           "Kashmiri Mini Combo (Non Veg)": ["Rs. 220", "Non Veg"],

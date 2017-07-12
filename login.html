@@ -1,0 +1,96 @@
+<SCRIPT>
+function passWord(){
+  if(document.getElementById('pass').value=="babadadhaba")
+    location.href="admin.html";
+  else
+    alert("Incorrect");
+}
+</SCRIPT>
+
+<head>
+  <meta charset="utf-8">
+  <title>Baba da Dhaba</title>
+
+  <!--Mobile Specific Meta Tag-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Google Material Icons -->
+  <link href="css/vendor/material-icons.min.css" rel="stylesheet" media="screen">
+
+  <!-- Brand Icons -->
+  <link href="css/vendor/socicon.min.css" rel="stylesheet" media="screen">
+
+  <!-- Bootstrap -->
+  <link href="css/vendor/bootstrap.min.css" rel="stylesheet" media="screen">
+
+  <!-- Theme Styles -->
+  <link href="css/theme.min.css" rel="stylesheet" media="screen">
+
+  <!-- Page Preloading -->
+  <script src="js/vendor/page-preloading.js"></script>
+
+  <!-- Modernizr -->
+  <script src="js/vendor/modernizr.custom.js"></script>
+</head>
+
+<!-- Body -->
+<body class="page-preloading">
+
+  <!-- Page Pre-Loader -->
+  <div class="page-preloader">
+    <div class="preloader">
+      <img src="img/preloader.gif" alt="Preloader">
+    </div>
+  </div><!-- .page-preloader -->
+
+  <!-- Page Wrapper -->
+  <div class="page-wrapper">
+
+    <!-- Navbar -->
+    <header class="navbar">
+
+      <!-- Navbar Header -->
+      <div class="navbar-header">
+
+        <!-- Site Logo -->
+        <a href="#top" class="site-logo visible-desktop">
+          <span>Baba</span><span class="text-gray">da</span><span>Dhaba</span>
+        </a><!-- site-logo.visible-desktop -->
+        <a href="#top" class="site-logo visible-mobile">
+          <span>Baba</span>da<span>Dhaba</span>
+        </a><!-- site-logo.visible-mobile -->
+
+        <!-- Mobile Menu Toggle -->
+        <a href="#" class="mobile-menu-toggle"><i class="material-icons reorder"></i></a>
+      </div><!-- .navbar-header -->
+
+      <!-- Mobile Menu Wrapper -->
+      <div class="mobile-menu-wrapper">
+
+        <!-- Toolbar -->
+        <div class="toolbar">
+          <div class="cart-btn">
+            <a href="#">
+              <i>Admin Panel</i>
+            </a>
+          </div><!-- .cart-btn -->
+        </div><!-- .toolbar -->
+
+      </div><!-- .mobile-menu-wrapper -->
+    </header><!-- .navbar -->
+
+    <nav class="main-navigation">
+      <CENTER>
+        <form action="action.php" method="post">
+          <p>Password: <input id="pass" type="password" name="password" /></p>
+          <p><input class="btn btn-primary btn-with-icon-right waves-effect waves-light space-top-none" value="Login" onclick="passWord()"/></p>
+        </form>
+      </CENTER>
+    </nav>
+</div>

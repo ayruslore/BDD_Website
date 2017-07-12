@@ -14,12 +14,9 @@ function getURL(){
   uid="";
   for (var i = 0; i<=str.length; i++){
         //console.log(str.charAt(i));
-        if (str.charAt(i) == "=")
-        {
-          for ( var j=i+1; j<str.length; j++){
-            //console.log(str.charAt(j));
+        if (str.charAt(i) == "="){
+          for ( var j=i+1; j<str.length; j++)
             uid = uid + str.charAt(j);
-          }
           break;
         }
       }
@@ -33,12 +30,12 @@ function finalSend(){
   $.ajax({
     type: "GET",
     url: "https://50117a46.ngrok.io/cart/"+uid+"/replace/"+cartJSON,
-    data: "",//cartJSON,
+    data: "",
     success: function(data){
       //console.log('Success!');
     },
     error: function(data){
-      alert('Nope!');
+      console.log('Nope!');
     }
   });
 }

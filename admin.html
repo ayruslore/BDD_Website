@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Baba da Dhaba</title>
+
+  <!--Mobile Specific Meta Tag-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Google Material Icons -->
+  <link href="css/vendor/material-icons.min.css" rel="stylesheet" media="screen">
+
+  <!-- Brand Icons -->
+  <link href="css/vendor/socicon.min.css" rel="stylesheet" media="screen">
+
+  <!-- Bootstrap -->
+  <link href="css/vendor/bootstrap.min.css" rel="stylesheet" media="screen">
+
+  <!-- Theme Styles -->
+  <link href="css/theme.min.css" rel="stylesheet" media="screen">
+
+  <!-- Page Preloading -->
+  <script src="js/vendor/page-preloading.js"></script>
+
+  <!-- Modernizr -->
+  <script src="js/vendor/modernizr.custom.js"></script>
+</head>
+
+<!-- Body -->
+<body class="page-preloading">
+
+  <!-- Page Pre-Loader -->
+  <div class="page-preloader">
+    <div class="preloader">
+      <img src="img/preloader.gif" alt="Preloader">
+    </div>
+  </div><!-- .page-preloader -->
+
+  <!-- Page Wrapper -->
+  <div class="page-wrapper">
+
+    <!-- Navbar -->
+    <header class="navbar">
+
+      <!-- Navbar Header -->
+      <div class="navbar-header">
+
+        <!-- Site Logo -->
+        <a href="#top" class="site-logo visible-desktop">
+          <span>Baba</span><span class="text-gray">da</span><span>Dhaba</span>
+        </a><!-- site-logo.visible-desktop -->
+        <a href="#top" class="site-logo visible-mobile">
+          <span>Baba</span>da<span>Dhaba</span>
+        </a><!-- site-logo.visible-mobile -->
+
+        <!-- Mobile Menu Toggle -->
+        <a href="#" class="mobile-menu-toggle"><i class="material-icons reorder"></i></a>
+      </div><!-- .navbar-header -->
+
+      <!-- Mobile Menu Wrapper -->
+      <div class="mobile-menu-wrapper">
+
+        <!-- Toolbar -->
+        <div class="toolbar">
+          <div class="cart-btn">
+            <a href="#">
+              <i>Admin Panel</i>
+            </a>
+          </div><!-- .cart-btn -->
+        </div><!-- .toolbar -->
+
+        <!-- Main Navigation -->
+        <nav class="main-navigation">
+          <ul class="menu">
+            <li><a href="#" id="default" onclick="openCourse(event, 'menuView'); viewMenu()">View Menu</a></li>
+            <li><a href="#" onclick="openCourse(event, 'editC')">Edit Courses</a></li>
+            <li><a href="#" onclick="openCourse(event, 'editD')">Edit Dishes</a></li>
+            <li><a href="#" onclick="submitChanges()">Submit Changes</a></li>
+          </ul><!-- .menu -->
+        </nav><!-- .main-navigation -->
+      </div><!-- .mobile-menu-wrapper -->
+    </header><!-- .navbar -->
+
+    <!-- Main Content Wrapper -->
+    <main id="top" class="content-wrapper">
+
+      <section class="container-fluid padding-top-3x">
+        <div class="tabcontent" id="menuView">
+          <h3 class="toolbar-title">View Menu</h3>
+          <section id="display"></section>
+        </div>
+
+        <div class="tabcontent" id="editC">
+          <h3 class="toolbar-title">Edit Courses</h3>
+            <a onclick="removeC()" href="#">Remove Course</a>
+              <section id="rem"></section>
+            <a onclick="addC()" href="#">Add Course</a>
+              <section id="ad"></section>
+          </div>
+
+        <div class="tabcontent" id="editD">
+          <h3 class="toolbar-title">Edit Dishes</h3>
+          <a onclick="removeD()" href="#">Remove Dish</a>
+            <section id="remD"></section>
+          <a onclick="addD()" href="#">Add Dish</a>
+            <section id="adD"></section>
+        </div>
+      </section>
+
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="column">
+          <!-- Scroll To Top Button -->
+          <div class="scroll-to-top-btn"><i class="material-icons trending_flat"></i></div>
+        </div><!-- .column -->
+      </footer><!-- .footer -->
+    </main><!-- .content-wrapper -->
+
+  </div><!-- .page-wrapper -->
+
+  <!-- JavaScript (jQuery) libraries, plugins and custom scripts -->
+  <script src="js/vendor/jquery-2.1.4.min.js"></script>
+  <script src="js/vendor/bootstrap.min.js"></script>
+  <script src="js/vendor/smoothscroll.js"></script>
+  <script src="js/vendor/velocity.min.js"></script>
+  <script src="js/vendor/waves.min.js"></script>
+  <script src="js/vendor/icheck.min.js"></script>
+  <script src="js/vendor/owl.carousel.min.js"></script>
+  <script src="js/vendor/magnific-popup.min.js"></script>
+  <script src="js/scripts.js"></script>
+  <script src="js/tabs.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <!---script src="js/BabaDaDhaba.js" ></script>--->
+  <script src="js/py/test.js"></script>
+  <script src="js/adminPanel.js"></script>
+
+  <script>
+  document.getElementById("default").click();
+  </script>
+
+</body><!-- <body> -->
+</html>
