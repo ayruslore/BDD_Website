@@ -259,6 +259,7 @@ jQuery(document).ready(function($) {
 		e.preventDefault();
 		//exp
 		var id_=$button.parent().find('.quantity').attr('name');
+		//console.log(id_);
 		getData2();
 		if(newVal!=0) syncValues(id_, newVal);
 	});

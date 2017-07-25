@@ -8,28 +8,20 @@
 
   <!--Mobile Specific Meta Tag-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
   <link href="css/style.css" rel="stylesheet" type="text/css">
-
   <!--Favicon-->
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-
   <!-- Google Material Icons -->
   <link href="css/vendor/material-icons.min.css" rel="stylesheet" media="screen">
-
   <!-- Brand Icons -->
   <link href="css/vendor/socicon.min.css" rel="stylesheet" media="screen">
-
   <!-- Bootstrap -->
   <link href="css/vendor/bootstrap.min.css" rel="stylesheet" media="screen">
-
   <!-- Theme Styles -->
   <link href="css/theme.min.css" rel="stylesheet" media="screen">
-
   <!-- Page Preloading -->
   <script src="js/vendor/page-preloading.js"></script>
-
   <!-- Modernizr -->
   <script src="js/vendor/modernizr.custom.js"></script>
 </head>
@@ -78,19 +70,19 @@
                     <input type="tel" class="form-control" name="phone" placeholder="Phone" required/>
                   </div>
                 </div><!-- .row -->
-                <input onkeyup="openCourse(event, 'pay')" type="text" class="form-control" name="address" placeholder="Address" required/>
+                <input type="text" class="form-control" name="address" placeholder="Address" required/>
                 <p class="text-gray text-sm">Finish the form to proceed.</p>
               </div><!-- .col-sm-8 -->
 
             <!-- Sidebar -->
-            <div id="pay" class="col-md-3 col-md-offset-1 col-sm-4 padding-bottom-2x tabcontent">
+            <div class="col-md-3 col-md-offset-1 col-sm-4 padding-bottom-2x">
               <aside>
                 <h3 class="toolbar-title">Pay Using</h3>
                 <h4 id="amt" class="amount">&#8377;0</h4>
                 <p class="text-sm text-gray">Choose one of the following as your payment methods.</p>
                 <a id="rzp-button1" class="btn btn-primary btn-block waves-effect waves-light space-top-none">Razorpay</a>
-                <a onclick="alert('Close webview to proceed.')" class="btn btn-primary btn-block waves-effect waves-light space-top-none">Paytm</a>
-                <a onclick="alert('Close webview to proceed.')" class="btn btn-primary btn-block waves-effect waves-light space-top-none">Cash on Delivery</a>
+                <!---a onclick="alert('Close webview to proceed.')" class="btn btn-primary btn-block waves-effect waves-light space-top-none">Paytm</a-->
+                <a onclick="done()" class="btn btn-primary btn-block waves-effect waves-light space-top-none">Cash on Delivery</a>
               </aside>
             </div><!-- .col-md-3.col-sm-4 -->
           </div><!-- .row -->
@@ -111,18 +103,18 @@
   <script src="js/vendor/owl.carousel.min.js"></script>
   <script src="js/vendor/magnific-popup.min.js"></script>
   <script src="js/scripts.js"></script>
-  <script src="js/scripts.js"></script>
+  <script src="js/sendingData.js"></script>
+  <script>
+    window.onload(getURL());
+  </script>
   <script src="js/tabs.js"></script>
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <script src="js/razorpay.js"></script>
+  <script>
+    window.onload(amount());
+  </script>
 
-<script>
-  document.getElementById('amt').innerHTML=sessionStorage.getItem('total');
-  if(Number(sessionStorage.getItem('total').slice(1))==0){
-    window.location="index.html";
-    window.alert("Can\'t checkout with nothing in cart. Close webview to exit");
-  }
-</script>
+
 
 </body><!-- <body> -->
 </html>

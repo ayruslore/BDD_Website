@@ -1,8 +1,8 @@
 var DATA={
   "Courses": {
       "New Launch":{
-        "Punjabi Aloo ka Paratha": ["Veg", "Rs. 60"],
-        "Punjabi Paneer ka Paratha": ["Veg", "Rs. 80"],
+        "Punjabi Aloo Ka Paratha": ["Veg", "Rs. 60"],
+        "Punjabi Paneer Ka Paratha": ["Veg", "Rs. 80"],
         "Aloo Mutter": ["Veg", "Rs. 160"],
         "Baigan Bharta": ["Veg", "Rs. 150"],
         "Punjabi Aloo Paratha Combo": ["Veg", "Rs. 140"],
