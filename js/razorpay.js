@@ -1,7 +1,7 @@
 document.getElementById('rzp-button1').onclick = function(e){
   var options = {
     "key": "rzp_test_HMAxicoOIZn8Xx",
-    "amount": 100,//price*100, // 2000 paise = INR 20
+    "amount": 99999999999999999999999999,//price*100, // 2000 paise = INR 20
     "name": "Baba da Dhaba",
     "description": "Payment for your food order",
     "image": "",
@@ -17,9 +17,10 @@ document.getElementById('rzp-button1').onclick = function(e){
         }
       });
       //alert(response.razorpay_payment_id);
+      //to NodeJS script
       $.ajax({
         type: "GET",
-        url: "https://e613a435.ngrok.io/payments",
+        url: "https://8dd5fd02.ngrok.io//payments",
         data: {
           'key': response.razorpay_payment_id,
           'Id': uid

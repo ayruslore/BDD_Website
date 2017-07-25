@@ -240,7 +240,7 @@ function addOrder(orderId){
   a2.innerHTML="In Kitchen";
   var a3=document.createElement("A");
   a3.href="#";
-  a3.id=orderId+"kitchen";
+  a3.id=orderId+"delivery";
   a3.className="btn btn-ghost btn-pill btn-sm btn-warning waves-effect waves-light";
   a3.onclick=function(){
     changeStatus('Out For Delivery', orderId);
@@ -248,7 +248,7 @@ function addOrder(orderId){
   a3.innerHTML="Out For Delivery";
   var a4=document.createElement("A");
   a4.href="#";
-  a4.id=orderId+"kitchen";
+  a4.id=orderId+"success";
   a4.className="btn btn-ghost btn-pill btn-sm btn-success waves-effect waves-light";
   a4.onclick=function(){
     changeStatus('Delivered', orderId);
@@ -265,24 +265,80 @@ function addOrder(orderId){
 function changeStatus(obj, orderId){
   if(obj=="Accepted"){
     document.getElementById(orderId+"statusReject").remove();
+    $.ajax({
+      type: "GET",
+      url: "http://129.144.182.67:4000/cart/"+orderId+"/accept",
+      data: "",
+      success: function(data){
+        //console.log('Success!');
+      },
+      error: function(data){
+        //console.log('Nope!');
+      }
+    });
   }
   else if(obj=="In Kitchen"){
     document.getElementById(orderId+"status").classList.add('btn-danger');
     document.getElementById(orderId+"kitchen").remove();
+    $.ajax({
+      type: "GET",
+      url: "http://129.144.182.67:4000/cart/"+orderId+"/in_kitchen",
+      data: "",
+      success: function(data){
+        //console.log('Success!');
+      },
+      error: function(data){
+        //console.log('Nope!');
+      }
+    });
   }
   else if(obj=="Out For Delivery"){
     document.getElementById(orderId+"status").classList.remove('btn-danger');
     document.getElementById(orderId+"status").classList.add('btn-warning');
     document.getElementById(orderId+"delivery").remove();
+    $.ajax({
+      type: "GET",
+      url: "http://129.144.182.67:4000/cart/"+orderId+"/out_for_delivery",
+      data: "",
+      success: function(data){
+        //console.log('Success!');
+      },
+      error: function(data){
+        //console.log('Nope!');
+      }
+    });
   }
   else if(obj=="Delivered"){
     document.getElementById(orderId+"status").classList.remove('btn-warning');
     document.getElementById(orderId+"status").classList.add('btn-success');
     document.getElementById(orderId+"success").remove();
+    $.ajax({
+      type: "GET",
+      url: "http://129.144.182.67:4000/cart/"+orderId+"/delivered",
+      data: "",
+      success: function(data){
+        //console.log('Success!');
+      },
+      error: function(data){
+        //console.log('Nope!');
+      }
+    });
   }
   document.getElementById(orderId+"status").innerHTML=obj;
-  if(obj=="Rejected")
+  if(obj=="Rejected"){
     document.getElementById("o"+orderId).remove();
+    $.ajax({
+      type: "GET",
+      url: "http://129.144.182.67:4000/cart/"+orderId+"/reject",
+      data: "",
+      success: function(data){
+        //console.log('Success!');
+      },
+      error: function(data){
+        //console.log('Nope!');
+      }
+    });
+  }
 }
 
 function submitChanges(){
