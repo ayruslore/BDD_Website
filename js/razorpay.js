@@ -1,11 +1,12 @@
 document.getElementById('rzp-button1').onclick = function(e){
   var options = {
     "key": "rzp_test_HMAxicoOIZn8Xx",
-    "amount": 99999999999999999999999999,//price*100, // 2000 paise = INR 20
+    "amount": price*100, // 2000 paise = INR 20
     "name": "Baba da Dhaba",
     "description": "Payment for your food order",
     "image": "",
     "handler": function (response){
+      console.log(response);
       $.ajax({
         type: "GET",
         url: "http://129.144.182.67:4000/"+uid+"/set_payment_key/"+response.razorpay_payment_id,
@@ -20,7 +21,7 @@ document.getElementById('rzp-button1').onclick = function(e){
       //to NodeJS script
       $.ajax({
         type: "GET",
-        url: "https://8dd5fd02.ngrok.io//payments",
+        url: "https://8dd5fd02.ngrok.io/payments",
         data: {
           'key': response.razorpay_payment_id,
           'Id': uid
@@ -43,7 +44,7 @@ document.getElementById('rzp-button1').onclick = function(e){
       "address": document.getElementsByName('address')[0].value
     },
     "theme": {
-      "color": "#F37254"
+      "color": "#77cde3"
     }
   };
   var rzp1 = new Razorpay(options);

@@ -51,7 +51,10 @@ function viewMenu(){
     tabCourse.appendChild(hed);
     document.getElementById("dishDisplay").appendChild(tabCourse);
     //keys[i]=course
-
+    var j=0;
+    //<div class="row">
+    var d7=document.createElement("DIV");
+    d7.className="row"
     for (var key in DATA["Courses"][keys[i]]){
       //<div class="count-input">
       var d1=document.createElement("DIV");
@@ -124,8 +127,20 @@ function viewMenu(){
       //<div class="col-lg-3 col-md-4 col-sm-6">
       var d6=document.createElement("DIV");
       d6.className="col-lg-3 col-md-4 col-sm-6";
-      d6.appendChild(d5);
-      tabCourse.appendChild(d6);
+      if((j%4)!=0){
+        d6.appendChild(d5);
+        d7.appendChild(d6);
+        console.log("IF "+j);
+      }
+      else{
+        d7=document.createElement("DIV");
+        d7.className="row"
+        d6.appendChild(d5);
+        d7.appendChild(d6);
+        console.log("ELSE "+j);
+      }
+      tabCourse.appendChild(d7);
+      j+=1;
       //key=dish name
       //DATA["Courses"][keys[i]][key][0]=Veg/Non Veg
       //DATA["Courses"][keys[i]][key][1]=price

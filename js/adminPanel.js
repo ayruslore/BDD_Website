@@ -82,20 +82,13 @@ function removeDi(){
   for (var key in DATA["Courses"][course])
     keys2.push(key);
   for(var i=0; i<keys2.length; i++){
-    /*
-    <label class="checkbox">
-      <div class="icheckbox">
-        <input type="checkbox" style="position: absolute; opacity: 0;">
-        <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
-        </ins>
-      </div>
-    Checkbox
-    </label>
-    */
+    //<label class="checkbox">
     var la1=document.createElement("LABEL");
     la1.className="checkbox checked";
+    //<div class="icheckbox">
     var di1=document.createElement("DIV");
     di1.className="icheckbox";
+    //<input type="checkbox" style="position: absolute; opacity: 0;">
     var in1=document.createElement("INPUT");
     in1.setAttribute("type", "checkbox");
     in1.id=keys2[i];
@@ -103,6 +96,7 @@ function removeDi(){
     in1.value=keys2[i];
     in1.style="position: absolute; opacity: 0;";
     di1.appendChild(in1);
+    //<ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
     var in2=document.createElement("INS");
     in2.className="iCheck-helper";
     in2.style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;";
@@ -172,8 +166,9 @@ function addDi(){
   else vg=document.getElementById('Non Veg').value;
   var dish_name=document.getElementById('dish_name').value;
   var dish_price=document.getElementById('dish_price').value;
+
   if(dish_name.length!=0 & dish_price.length!=0 & course!=null & vg!=null){
-    DATA["Courses"][course][toTitleCase(dish_name)]=[dish_price, vg];
+    DATA["Courses"][course][toTitleCase(dish_name)]=[dish_price, vg, dish_ing];
     console.log(document.getElementById("imageFile").files[0].name);
     alert("Dish added!");
     openCourse(event, 'menuView');
@@ -188,10 +183,10 @@ function addOrder(orderId){
   //<div class="panel">
   var d1=document.createElement("DIV");
   d1.className="panel";
+  d1.id="o"+orderId;
   //<div class="panel-heading">
   var d2=document.createElement("DIV");
   d2.className="panel-heading";
-  d2.id="o"+orderId;
   //<a class="panel-title collapsed" data-toggle="collapse" data-parent="#accordion" href="#orderId" aria-expanded="false">
   var a1=document.createElement("A");
   a1.className="panel-title collapsed";
@@ -340,7 +335,19 @@ function changeStatus(obj, orderId){
     });
   }
 }
-
+/*
+$.ajax({
+  type: "GET",
+  url: "http://dc17849f.ngrok.io/",
+  dataType: "json",
+  success: function(data){
+    console.log(data);
+  },
+  error: function(data){
+    console.log("Na");
+  }
+});
+*/
 function submitChanges(){
   DATA=JSON.stringify(DATA);
   //console.log(DATA);
