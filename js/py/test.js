@@ -1,4 +1,4 @@
-var DATA={"Courses":{"New Launch":{"Punjabi Aloo Ka Paratha":
+var DATA={={"Courses":{"New Launch":{"Punjabi Aloo Ka Paratha":
 ["60","Veg"],"Punjabi Paneer Ka Paratha":
 ["80","Veg"],"Aloo Mutter":
 ["160","Veg"],"Baigan Bharta":

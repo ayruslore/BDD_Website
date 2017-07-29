@@ -1,4 +1,4 @@
-document.getElementById('rzp-button1').onclick = function(e){
+function razorpay(){
   var options = {
     "key": "rzp_test_HMAxicoOIZn8Xx",
     "amount": price*100, // 2000 paise = INR 20
@@ -6,7 +6,8 @@ document.getElementById('rzp-button1').onclick = function(e){
     "description": "Payment for your food order",
     "image": "",
     "handler": function (response){
-      console.log(response);
+      //console.log(response);
+      //save payment id
       $.ajax({
         type: "GET",
         url: "http://129.144.182.67:4000/"+uid+"/set_payment_key/"+response.razorpay_payment_id,
@@ -18,6 +19,17 @@ document.getElementById('rzp-button1').onclick = function(e){
         }
       });
       //alert(response.razorpay_payment_id);
+      //save address
+      $.ajax({
+        type: "GET",
+        url: "http://129.144.182.67:4000/"+uid+"/set_address/payment/"+lat+","+long,
+        success: function(data){
+          //console.log('Success!');
+        },
+        error: function(data){
+          //console.log('Nope!');
+        }
+      });
       //to NodeJS script
       $.ajax({
         type: "GET",
@@ -33,30 +45,36 @@ document.getElementById('rzp-button1').onclick = function(e){
           //console.log('Nope!');
         }
       });
-      done();
+      alert("Close webview to proceed!");
     },
     "prefill": {
-      "name": document.getElementsByName('f_name')[0].value+" "+document.getElementsByName('l_name')[0].value,
-      "email": document.getElementsByName('email')[0].value,
-      "contact": document.getElementsByName('phone')[0].value
-    },
+      "name": nameUser,
+      "email": emailUser,
+      "contact": phoneUser
+    },/*
     "notes": {
       "address": document.getElementsByName('address')[0].value
-    },
+    },*/
     "theme": {
       "color": "#77cde3"
     }
   };
   var rzp1 = new Razorpay(options);
   rzp1.open();
-  e.preventDefault();
 }
 
 function done(){
-  alert("Close webview to proceed!");
+  nameUser=document.getElementsByName('name')[0].value;
+  phoneUser=document.getElementsByName('phone')[0].value;
+  emailUser=document.getElementsByName('email')[0].value;
+  console.log("Latitude: "+lat+"\nLongitude: "+long);
+  if(nameUser!="" & phoneUser!="" & emailUser!="")
+    razorpay();
+  else
+    alert("Fill in the details to proceed.");
 }
 
-var price;
+var price, nameUser, phoneUser, emailUser;
 
 function amount(){
   $.ajax({

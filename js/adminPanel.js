@@ -179,7 +179,7 @@ function addDi(){
 }
 
 
-function addOrder(orderId){
+function addOrder(orderId, order){
   //<div class="panel">
   var d1=document.createElement("DIV");
   d1.className="panel";
@@ -222,7 +222,7 @@ function addOrder(orderId){
   d3.setAttribute("aria-expanded", "false");
   d3.style="height: 0px;"
   var d4=document.createElement("DIV");
-  d4.innerHTML="* ORDER DETAILS HERE *<br>";
+  d4.innerHTML=order+"<br>";
   d4.className="panel-body text-gray";
   d4.innerHTML+="Update Status! ";
   var a2=document.createElement("A");
@@ -335,25 +335,28 @@ function changeStatus(obj, orderId){
     });
   }
 }
-/*
-$.ajax({
-  type: "GET",
-  url: "http://dc17849f.ngrok.io/",
-  dataType: "json",
-  success: function(data){
-    console.log(data);
-  },
-  error: function(data){
-    console.log("Na");
-  }
-});
-*/
+
+setInterval(function(){
+    $.ajax({
+    url: 'http://129.144.182.67:4000/read_orders',
+    success: function(data) {
+      data=JSON.parse(data);
+      console.log(data);
+      for(item in data){
+        item=JSON.parse(item);
+        console.log(item);
+        addOrder(item["id"], data["cart"]);
+      }
+    }
+  });
+}, 60000);
+
 function submitChanges(){
   DATA=JSON.stringify(DATA);
   //console.log(DATA);
   $.ajax({
     type: "GET",
-    url: "http://localhost:4040/write/"+DATA,
+    url: "http://129.144.182.67:4000/set_menu/"+DATA,
     data: "",
     success: function(data){
       console.log(data);

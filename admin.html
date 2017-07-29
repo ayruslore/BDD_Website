@@ -91,7 +91,6 @@
               <a href='#' onclick="openCourse2(event, 'removeDish')">Remove Dish</a>
               <a href='#' onclick="openCourse2(event, 'addCourse')">Add Course</a>
               <a href='#' onclick="openCourse2(event, 'removeCourse')">Remove Course</a>
-              <a href='#' onclick="openCourse2(event, 'avail')">Change Dish Availability</a>
             </div><!-- .widget.widget-price -->
 
             <div class="tabcontent2" id="addDish">
@@ -194,16 +193,14 @@
               <a class="btn btn-ghost btn-pill btn-danger waves-effect waves-light">Remove Course!</a>
             </div>
 
-            <div class="tabcontent2" id="avail">
-              <h4 class="toolbar-title">Change Dish Availability</h3>
-            </div>
+            <a href="#" class="btn btn-pill btn-primary waves-effect waves-light" onclick="addDi()">Update Menu</a>
           </div>
 
         <div class="tabcontent" id="order">
           <h3 class="toolbar-title">Orders</h3>
 
           <div class="panel-group" id="accordion">
-              <script>addOrder("BDD_FB0001");</script>
+              <script>addOrder("BDD_FB0001", "Naan: 1");addOrder("BDD_FB0002", "Roti: 3");</script>
             </div>
         </div>
       </section>

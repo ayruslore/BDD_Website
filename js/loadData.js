@@ -130,14 +130,14 @@ function viewMenu(){
       if((j%4)!=0){
         d6.appendChild(d5);
         d7.appendChild(d6);
-        console.log("IF "+j);
+        //console.log("IF "+j);
       }
       else{
         d7=document.createElement("DIV");
         d7.className="row"
         d6.appendChild(d5);
         d7.appendChild(d6);
-        console.log("ELSE "+j);
+        //console.log("ELSE "+j);
       }
       tabCourse.appendChild(d7);
       j+=1;
