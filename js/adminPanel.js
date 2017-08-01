@@ -84,13 +84,13 @@ function removeDi(){
   for(var i=0; i<keys2.length; i++){
     //<label class="checkbox">
     var la1=document.createElement("LABEL");
-    la1.className="checkbox checked";
+    la1.className="radio";
     //<div class="icheckbox">
     var di1=document.createElement("DIV");
-    di1.className="icheckbox";
+    di1.className="iradio";
     //<input type="checkbox" style="position: absolute; opacity: 0;">
     var in1=document.createElement("INPUT");
-    in1.setAttribute("type", "checkbox");
+    in1.setAttribute("type", "radio");
     in1.id=keys2[i];
     in1.class="chb";
     in1.value=keys2[i];
@@ -108,18 +108,23 @@ function removeDi(){
   var ab=document.createElement("A");
   ab.className="btn btn-ghost btn-pill btn-danger waves-effect waves-light";
   ab.innerHTML="Remove Dish!";
+  ab.onclick=function(){
+    remoD(keys2, course);
+  }
   document.getElementById('dishes').appendChild(ab);
 }
 
 function remoD(keys2, course){
   var rate_value;
   for(var i=0; i<keys2.length; i++)
-    if (document.getElementById('d'+i).checked)
-      rate_value = document.getElementById('d'+i).value;
+    if (document.getElementById(keys2[i]).checked)
+      //console.log(document.getElementById(keys2[i]).value);
+      rate_value = document.getElementById(keys2[i]).value;
   delete DATA["Courses"][course][rate_value];
-  //console.log(DATA["Courses"][course]);
-  document.getElementById("courseDishes").innerHTML="";
-  alert("Dish Removed!");
+  console.log(DATA["Courses"][course]);
+  //document.getElementById("courseDishes").innerHTML="";
+  document.getElementById("removeDish123").click();
+  //alert(rate_value+" Removed!\nUpdate Menu now!");
 }
 
 function addD(id_){
@@ -341,7 +346,7 @@ setInterval(function(){
     url: 'http://129.144.182.67:4000/read_orders',
     success: function(data) {
       data=JSON.parse(data);
-      console.log(data);
+      //console.log(data);
       for(item in data){
         item=JSON.parse(item);
         console.log(item);
