@@ -78,12 +78,17 @@ function done(){
   }
   else{
     if(nameUser!="" & addUser!=""){
-      var userData={"name":nameUser, "number":phoneUser, "address":addUser};
+      var userData={
+        "name":nameUser,
+        "number":phoneUser,
+        "address":addUser
+      };
+      userData=JSON.stringify(userData);
       alert("Close the webview to proceed! You'll receive a confirmation message soon.");
       document.getElementsByTagName("BODY")[0].style.display="none";
       $.ajax({
         type: "GET",
-        url: "https://2476318e.ngrok.io/",
+        url: "https://2476318e.ngrok.io/confirm",
         data: {
           'Id': uid
         },
@@ -96,7 +101,7 @@ function done(){
       });
       $.ajax({
         type: "GET",
-        url: "http://129.144.182.67:4000/set_confirmation"+uid+"/"+userData,
+        url: "http://129.144.182.67:4000/set_confirmation/"+uid+"/"+userData,
         success: function(data){
           //console.log('Success!');
         },
