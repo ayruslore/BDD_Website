@@ -64,28 +64,55 @@ function razorpay(){
 }
 
 function done(){
+  function getlength(number){
+    return number.toString().length;
+  }
   nameUser=document.getElementsByName('name')[0].value;
-  phoneUser=document.getElementsByName('phone')[0].value;
-  emailUser=document.getElementsByName('email')[0].value;
-  console.log("Latitude: "+lat+"\nLongitude: "+long);
-  if(nameUser!="" & phoneUser!="" & emailUser!="")
-    razorpay();
-  else
+  phoneUser=Number(document.getElementsByName('phone')[0].value);
+  addUser=document.getElementsByName('address')[0].value;
+  //console.log("Latitude: "+lat+"\nLongitude: "+long);
+  if(nameUser=="" | addUser=="" | phoneUser=="")
     alert("Fill in the details to proceed.");
+  else if(getlength(phoneUser)!=10){
+    alert("Invald phone number!");
+  }
+  else{
+    if(nameUser!="" & addUser!=""){
+      alert("Close the webview to proceed! You'll receive a confirmation message soon.");
+      document.getElementsByTagName("BODY")[0].style.display="none";
+      $.ajax({
+        type: "GET",
+        url: "https://2476318e.ngrok.io/",
+        data: {
+          'Id': uid
+        },
+        success: function(data){
+          //console.log(data);
+        },
+        error: function(data){
+          //console.log('Nope!');
+        }
+      });
+    }
+  }
+
 }
 
-var price, nameUser, phoneUser, emailUser;
+var price, nameUser, phoneUser, addUser;
 
 function amount(){
+  var adrs;
   $.ajax({
     type: "GET",
-    url: "http://129.144.182.67:4000/get_cart_price/"+uid,
+    url: "http://129.144.182.67:4000/get_location_total/"+uid,
     success: function(data){
       data=JSON.stringify(data);
       data=JSON.parse(data);
       price=data["total"];
-      //console.log(price);
+      adrs=data["address"];
+      console.log(price+" "+adrs);
       document.getElementById('amt').innerHTML="&#8377;"+price;
+      document.getElementsByName('address')[0].value=adrs;
     },
     error: function(data){
       //console.log('Nope!');

@@ -89,6 +89,7 @@
             <div class="widget widget-tags">
               <a href='#' onclick="openCourse2(event, 'addDish')">Add Dish</a>
               <a href='#' onclick="openCourse2(event, 'removeDish')">Remove Dish</a>
+              <a href='#' onclick="openCourse2(event, 'editDish')">Edit Dish</a>
               <a href='#' onclick="openCourse2(event, 'addCourse')">Add Course</a>
               <a href='#' onclick="openCourse2(event, 'removeCourse')">Remove Course</a>
             </div><!-- .widget.widget-price -->
@@ -180,6 +181,15 @@
               <span id="dishes"></span>
             </div>
 
+            <div class="tabcontent2" id="editDish">
+              <h4 class="toolbar-title">Edit Dish</h3>
+              <h5 id="courses4" class="text-uppercase text-gray text-thin space-bottom">Select Course</h5>
+                <script>addD("courses4");</script>
+              <a href="#" id="editDish" class="btn btn-pill btn-primary waves-effect waves-light" onclick="editDi()">Select</a>
+              <span id="dishes"></span>
+
+            </div>
+
             <div class="tabcontent2" id="addCourse">
               <h4 class="toolbar-title">Add Course</h3>
                 <input class="form-control col-sm-6" id="course_name" type="text" placeholder="Course Name">
@@ -200,8 +210,11 @@
           <h3 class="toolbar-title">Orders</h3>
 
           <div class="panel-group" id="accordion">
-              <script>addOrder("BDD_FB0001", "Naan: 1");addOrder("BDD_FB0002", "Roti: 3");</script>
-            </div>
+              <script>
+                addOrder("BDD_FB0001", "Naan: 1");
+                addOrder("BDD_FB0002", "Roti: 3");
+              </script>
+          </div>
         </div>
       </section>
 

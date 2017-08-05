@@ -114,6 +114,10 @@ function removeDi(){
   document.getElementById('dishes').appendChild(ab);
 }
 
+function editDi(){
+
+}
+
 function remoD(keys2, course){
   var rate_value;
   for(var i=0; i<keys2.length; i++)
@@ -135,6 +139,10 @@ function addD(id_){
     d1.className="iradio";
     var i1=document.createElement("INPUT");
     i1.setAttribute("type", "radio");
+    if(id_=="courses4"){
+      i1.id=keys[i]+"_3";
+      i1.name="rad5";
+    }
     if(id_=="courses3"){
       i1.id=keys[i]+"_2";
       i1.name="rad4";
@@ -268,7 +276,6 @@ function changeStatus(obj, orderId){
     $.ajax({
       type: "GET",
       url: "http://129.144.182.67:4000/cart/"+orderId+"/accept",
-      data: "",
       success: function(data){
         //console.log('Success!');
       },
@@ -281,7 +288,6 @@ function changeStatus(obj, orderId){
     document.getElementById(orderId+"status").classList.add('btn-danger');
     document.getElementById(orderId+"kitchen").remove();
     $.ajax({
-      type: "GET",
       url: "http://129.144.182.67:4000/cart/"+orderId+"/in_kitchen",
       data: "",
       success: function(data){
@@ -293,20 +299,23 @@ function changeStatus(obj, orderId){
     });
   }
   else if(obj=="Out For Delivery"){
-    document.getElementById(orderId+"status").classList.remove('btn-danger');
-    document.getElementById(orderId+"status").classList.add('btn-warning');
-    document.getElementById(orderId+"delivery").remove();
-    $.ajax({
-      type: "GET",
-      url: "http://129.144.182.67:4000/cart/"+orderId+"/out_for_delivery",
-      data: "",
-      success: function(data){
-        //console.log('Success!');
-      },
-      error: function(data){
-        //console.log('Nope!');
-      }
-    });
+    var delGuy=prompt("Please enter delivery boy's phone number", "");
+    if (delGuy!=null){
+      document.getElementById(orderId+"status").classList.remove('btn-danger');
+      document.getElementById(orderId+"status").classList.add('btn-warning');
+      document.getElementById(orderId+"delivery").innerHTML="Update No.";
+      console.log(delGuy);
+      $.ajax({
+        type: "GET",
+        url: "http://129.144.182.67:4000/cart/"+orderId+"/out_for_delivery/"+delGuy,
+        success: function(data){
+          //console.log('Success!');
+        },
+        error: function(data){
+          //console.log('Nope!');
+        }
+      });
+    }
   }
   else if(obj=="Delivered"){
     document.getElementById(orderId+"status").classList.remove('btn-warning');
@@ -315,7 +324,6 @@ function changeStatus(obj, orderId){
     $.ajax({
       type: "GET",
       url: "http://129.144.182.67:4000/cart/"+orderId+"/delivered",
-      data: "",
       success: function(data){
         //console.log('Success!');
       },
@@ -345,13 +353,17 @@ setInterval(function(){
     $.ajax({
     url: 'http://129.144.182.67:4000/read_orders',
     success: function(data) {
+      console.log(data);
       data=JSON.parse(data);
-      //console.log(data);
+      console.log(data);
       for(item in data){
         item=JSON.parse(item);
         console.log(item);
         addOrder(item["id"], data["cart"]);
       }
+    },
+    error: function(data){
+      console.log(data);
     }
   });
 }, 60000);
