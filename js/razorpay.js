@@ -78,6 +78,7 @@ function done(){
   }
   else{
     if(nameUser!="" & addUser!=""){
+      var userData={"name":nameUser, "number":phoneUser, "address":addUser};
       alert("Close the webview to proceed! You'll receive a confirmation message soon.");
       document.getElementsByTagName("BODY")[0].style.display="none";
       $.ajax({
@@ -88,6 +89,16 @@ function done(){
         },
         success: function(data){
           //console.log(data);
+        },
+        error: function(data){
+          //console.log('Nope!');
+        }
+      });
+      $.ajax({
+        type: "GET",
+        url: "http://129.144.182.67:4000/set_confirmation"+uid+"/"+userData,
+        success: function(data){
+          //console.log('Success!');
         },
         error: function(data){
           //console.log('Nope!');
