@@ -367,7 +367,8 @@ setInterval(function(){
       for(var i=0; i<data.length; i++){
         item=(data[i]);
         console.log(item["id"], JSON.stringify(item["cart"]));
-        addOrder(String(item["id"]), JSON.stringify(item["cart"]));
+        if(JSON.stringify(item["cart"])!={})
+          addOrder(String(item["id"]), JSON.stringify(item["cart"]));
       }
     },
     error: function(data){
