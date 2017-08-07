@@ -56,10 +56,17 @@ function populate(){
       data=JSON.parse(data);
       //console.log(data);
       for(var i in data){
+        var temp=i;
+        if(i.endsWith("Nonveg"))
+          temp=i.replace("Nonveg", "(Non Veg)");
+        else if(i.endsWith("Veg"))
+          temp=i.replace("Veg", "(Veg)");
+        else if(i=="B And W Chocolate Cake Eggless")
+          temp="B&W Chocolate Cake (Eggless)";
         //console.log(i);
         for(var j=0; j<keys.length; j++){
           for(var key in DATA["Courses"][keys[j]]){
-            if(i==key){
+            if(temp==key){
               //console.log(key);
               var x=document.getElementsByName(key);
               x[0].value=data[i];

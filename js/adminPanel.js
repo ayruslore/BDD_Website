@@ -348,25 +348,33 @@ function changeStatus(obj, orderId){
     });
   }
 }
+/*
+[
+{"id": "1446107422137541", "cart": {"tawa_roti": "6"}},
+{"id": "1446107422137541", "cart": {}},
+{"id": "1601355239935835", "cart": {"chicken_makhanwala": "3", "wheat_tawa_roti": "2"}},
+{"id": "1601355239935835", "cart": {}}
+]
+*/
 
 setInterval(function(){
     $.ajax({
     url: 'http://129.144.182.67:4000/read_orders',
     success: function(data) {
-      console.log(data);
+      //var data=[{"id": "1446107422137541", "cart": {"tawa_roti": "6"}},{"id": "1446107422137541", "cart": {}},{"id": "1601355239935835", "cart": {"chicken_makhanwala": "3", "wheat_tawa_roti": "2"}}];
       data=JSON.parse(data);
       console.log(data);
-      for(item in data){
-        item=JSON.parse(item);
-        console.log(item);
-        addOrder(item["id"], data["cart"]);
+      for(var i=0; i<data.length; i++){
+        item=(data[i]);
+        console.log(item["id"], JSON.stringify(item["cart"]));
+        addOrder(String(item["id"]), JSON.stringify(item["cart"]));
       }
     },
     error: function(data){
       console.log(data);
     }
   });
-}, 60000);
+}, 5000);
 
 function submitChanges(){
   DATA=JSON.stringify(DATA);
