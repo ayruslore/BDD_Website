@@ -1,10 +1,8 @@
-var DATA={"Courses":{"New Launch":{"Punjabi Aloo Ka Paratha":
-["60","Veg"],"Punjabi Paneer Ka Paratha":
-["80","Veg"],"Aloo Mutter":
-["160","Veg"],"Baigan Bharta":
-["150","Veg"],"Punjabi Aloo Paratha Combo":
+var DATA={"Courses":{"New Launch":{"Punjabi Aloo Paratha Combo":
 ["140","Veg"],"Punjabi Paneer Paratha Combo":
-["160","Veg"]},"Power Up Main Course":{"Pindi Chole":
+["160","Veg"]},"Power Up Main Course":{"Aloo Mutter":
+["160","Veg"],"Baigan Bhartha":
+["150","Veg"],"Pindi Chole":
 ["120","Veg"],"Murg Kali Mirch":
 ["250","Non Veg"],"Paneer Makhanwala":
 ["250","Veg"],"Paneer Lababdar":
@@ -19,14 +17,25 @@ var DATA={"Courses":{"New Launch":{"Punjabi Aloo Ka Paratha":
 ["90","Veg"],"Jeera Rice":
 ["120","Veg"],"Chicken Biryani":
 ["220","Non Veg"],"Mutton Biryani":
-["290","Non Veg"]},"Piping Breads":{"Onion Kulcha":
+["290","Non Veg"]},"Piping Breads":{"Punjabi Paneer Ka Paratha":
+["80","Veg"],"Punjabi Aloo Ka Paratha":
+["60","Veg"],"Tandoori Roti":
+["22", "Veg"],"Naan":
+["25", "Veg"],"Onion Kulcha":
 ["35","Veg"],"Wheat Tawa Roti":
 ["15","Veg"]},"Riveting Desserts":{"Phirni":
 ["90","Veg"],"Kheer":
 ["90","Veg"],"B&W Chocolate Cake (Eggless)":
-["150","Veg"]},"Super Coolants":{"Lassi":
-["80","Veg"],"Water":
-["20","Veg"]},"Top Gear Combos":{"Dilli Combo (Veg)":
+["150","Veg"]},"Super Coolants":{"Shikanji":
+["30", "Veg"],"Chaas":
+["40", "Veg"],"Lassi-Sweet":
+["75","Veg"],"Lassi-Salt":
+["75", "Veg"],"Water Bottle (500ml)":
+["20","Veg"],"Water Bottle (1l)":
+["40", "Veg"],"Soft Drink 250ml":
+["30", "Veg"], "Soft Drink 500ml":
+["44", "Veg"], "Diet Coke 330ml":
+["45", "Veg"]},"Top Gear Combos":{"Dilli Combo (Veg)":
 ["280","Veg"],"Amritsari Combo (Veg)":
 ["280","Veg"],"Lucknowi Combo (Veg)":
 ["280","Veg"],"Dilli Combo (Non Veg)":
@@ -40,7 +49,8 @@ var DATA={"Courses":{"New Launch":{"Punjabi Aloo Ka Paratha":
 ["160","Non Veg"],"Amritsari Mini Combo (Non Veg)":
 ["160","Non Veg"],"Kashmiri Mini Combo (Non Veg)":
 ["220","Non Veg"],"Pindi Chole Combo":
-["120","Veg"]},"Full Throttle Starters":{"Assorted Veg Tikki's":
+["120","Veg"]},"Full Throttle Starters":{"Chicken Tikka":
+["220", "Non Veg"],"Assorted Veg Tikki's":
 ["200","Veg"],"Paneer Tikka":
 ["220","Veg"],"Hariyali Chicken Kebab":
 ["220","Non Veg"],"Malai Chicken Kebab":
