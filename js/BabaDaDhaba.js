@@ -17,7 +17,8 @@ var DATA={"Courses":{"New Launch":{"Punjabi Aloo Paratha Combo":
 ["90","Veg"],"Jeera Rice":
 ["120","Veg"],"Chicken Biryani":
 ["220","Non Veg"],"Mutton Biryani":
-["290","Non Veg"]},"Piping Breads":{"Punjabi Paneer Ka Paratha":
+["290","Non Veg"]},"Piping Breads":{"Tawa Roti":
+["17", "Veg"],"Punjabi Paneer Ka Paratha":
 ["80","Veg"],"Punjabi Aloo Ka Paratha":
 ["60","Veg"],"Tandoori Roti":
 ["22", "Veg"],"Naan":
