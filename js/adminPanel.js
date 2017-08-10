@@ -53,7 +53,7 @@ function remo(){
   delete DATA["Courses"][rate_value];
   var index = keys.indexOf(rate_value);
   keys.splice(index, 1);
-  //console.log(DATA["Courses"]);
+  console.log(DATA["Courses"]);
   removeC();
 }
 
@@ -62,10 +62,10 @@ function addC(){
     document.getElementById("ad").innerHTML+='<button onclick="addCo()">Add</button>';
 }
 function addCo(){
-  //console.log(document.getElementById("new_course").value);
+  console.log(document.getElementById("new_course").value);
   DATA["Courses"][toTitleCase(document.getElementById("new_course").value)]={};
   keys.push(toTitleCase(document.getElementById("new_course").value));
-  //console.log(keys);
+  console.log(keys);
   alert("Course added!");
 }
 
@@ -122,7 +122,7 @@ function remoD(keys2, course){
   var rate_value;
   for(var i=0; i<keys2.length; i++)
     if (document.getElementById(keys2[i]).checked)
-      //console.log(document.getElementById(keys2[i]).value);
+      console.log(document.getElementById(keys2[i]).value);
       rate_value = document.getElementById(keys2[i]).value;
   delete DATA["Courses"][course][rate_value];
   console.log(DATA["Courses"][course]);
@@ -277,10 +277,10 @@ function changeStatus(obj, orderId){
       type: "GET",
       url: "http://129.144.182.67:4000/cart/"+orderId+"/accept",
       success: function(data){
-        //console.log('Success!');
+        console.log('Success!');
       },
       error: function(data){
-        //console.log('Nope!');
+        console.log('Nope!');
       }
     });
   }
@@ -291,10 +291,10 @@ function changeStatus(obj, orderId){
       url: "http://129.144.182.67:4000/cart/"+orderId+"/in_kitchen",
       data: "",
       success: function(data){
-        //console.log('Success!');
+        console.log('Success!');
       },
       error: function(data){
-        //console.log('Nope!');
+        console.log('Nope!');
       }
     });
   }
@@ -309,10 +309,10 @@ function changeStatus(obj, orderId){
         type: "GET",
         url: "http://129.144.182.67:4000/cart/"+orderId+"/out_for_delivery/"+delGuy,
         success: function(data){
-          //console.log('Success!');
+          console.log('Success!');
         },
         error: function(data){
-          //console.log('Nope!');
+          console.log('Nope!');
         }
       });
     }
@@ -325,10 +325,10 @@ function changeStatus(obj, orderId){
       type: "GET",
       url: "http://129.144.182.67:4000/cart/"+orderId+"/delivered",
       success: function(data){
-        //console.log('Success!');
+        console.log('Success!');
       },
       error: function(data){
-        //console.log('Nope!');
+        console.log('Nope!');
       }
     });
   }
@@ -340,10 +340,10 @@ function changeStatus(obj, orderId){
       url: "http://129.144.182.67:4000/cart/"+orderId+"/reject",
       data: "",
       success: function(data){
-        //console.log('Success!');
+        console.log('Success!');
       },
       error: function(data){
-        //console.log('Nope!');
+        console.log('Nope!');
       }
     });
   }
@@ -379,7 +379,7 @@ setInterval(function(){
 
 function submitChanges(){
   DATA=JSON.stringify(DATA);
-  //console.log(DATA);
+  console.log(DATA);
   $.ajax({
     type: "GET",
     url: "http://129.144.182.67:4000/set_menu/"+DATA,
