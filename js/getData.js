@@ -252,15 +252,17 @@ function syncValues(v1, val){
 
 window.onbeforeunload=function(e){
   console.log(uid);
-  /*
   $.ajax({
-  type: "GET",
-  url: "http://129.144.182.67:4000/set_confirmation/"+uid+"/"+userData,
-  success: function(data){
-  console.log('Success!');
-},
-error: function(data){
-console.log('Nope!');
-}
-});*/
+    type: "GET",
+    url: "https://babadadhaba1-a432393.apaas.us2.oraclecloud.com/confirm",
+    data: {
+      'show': uid
+    },
+    success: function(data){
+      console.log('Success!');
+    },
+    error: function(data){
+      console.log('Nope!');
+    }
+  });
 };
