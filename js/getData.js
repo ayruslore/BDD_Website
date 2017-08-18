@@ -1,3 +1,140 @@
+$('#clear').click(function() {
+  $('#search_bar').val('');
+  searchDish();
+});
+
+function searchDish(){
+  function imageName(nameD){
+    return nameD.replace(/ /g, '-');
+  }
+  document.getElementById("search").innerHTML="";
+  var srch=[];
+  var srchCourse=[];
+  function toTitleCase(str){
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+  }
+  var searchField=document.getElementById('search_bar').value;
+  //console.log(searchField);
+  for(var i=0; i<keys.length; i++){
+    //console.log(DATA["Courses"][keys[i]]);
+    for(var key in DATA["Courses"][keys[i]]){
+      if((key.toUpperCase()).indexOf(searchField.toUpperCase())!=-1){
+        srch.push(key);
+        srchCourse.push(keys[i]);
+      }
+    }
+  }
+  console.log(srch);
+  console.log(srchCourse);
+  //search bar heading
+  var tabCourse=document.getElementById("search");
+  var hed=document.createElement("H3");
+  hed.className="toolbar-title";
+  hed.innerHTML="Search Results";
+  tabCourse.appendChild(hed);
+  var j=0;
+  //<div class="row">
+  var d7=document.createElement("DIV");
+  d7.className="row"
+  for(var i=0; i<srch.length; i++){
+    //<div class="count-input">
+    var d1=document.createElement("DIV");
+    d1.className="count-input";
+    //<a class="incr-btn" data-action="decrease" href="#">–</a>
+    var a1=document.createElement("A");
+    a1.className="incr-btn";
+    a1.setAttribute("data-action", "decrease");
+    a1.href='#';
+    a1.innerHTML='-';
+    d1.appendChild(a1);
+    //<input class="quantity" name="c1_10" type="text" value="0">
+    var i1=document.createElement("INPUT");
+    i1.setAttribute("type", "text");
+    i1.className="quantity";
+    i1.value="0";
+    i1.name=srch[i];
+    d1.appendChild(i1);
+    //<a class="incr-btn" data-action="increase" href="#">+</a>
+    var a2=document.createElement("A");
+    a2.className="incr-btn";
+    a2.setAttribute("data-action", "increase");
+    a2.href='#';
+    a2.innerHTML='+';
+    d1.appendChild(a2);
+    //<div class="shop-item-tools">
+    var d2=document.createElement("DIV");
+    d2.className="shop-item-tools"
+    d2.appendChild(d1);
+    //<div class="shop-item-details">
+    var d3=document.createElement("DIV");
+    d3.className="shop-item-details";
+    //<h3 class="shop-item-title">Chicken Makhanwala</h3>
+    var hd1=document.createElement("H3");
+    hd1.className="shop-item-title";
+    hd1.innerHTML=srch[i];
+    d3.appendChild(hd1);
+    //<span class="shop-item-price">&#8377;250</span>
+    var s1=document.createElement("SPAN");
+    s1.className="shop-item-price";
+    s1.innerHTML="&#8377;"+DATA["Courses"][srchCourse[i]][srch[i]][0];
+    d3.appendChild(s1);
+    //<div class="shop-thumbnail">
+    var d4=document.createElement("DIV");
+    d4.className="shop-thumbnail";
+    if(DATA["Courses"][srchCourse[i]][srch[i]][1]=="Non Veg"){
+      var s2=document.createElement("SPAN");
+      s2.className="shop-label text-danger"
+      s2.innerHTML="Non Veg"
+      d4.appendChild(s2);
+    }
+    /*
+    //<span class="shop-label text-warning">Popular</span>
+    var s2=document.createElement("SPAN");
+    s2.className="shop-label text-warning";
+    s2.innerHTML="Recommended";
+    d4.appendChild(s2);
+    */
+    //<img src="img/menu/Riveting-Desserts/Chocolate-Cake.jpg" alt="Shop item">
+    var im1=document.createElement("IMG");
+    im1.src="img/db/"+imageName(srch[i])+".jpg";
+    im1.alt="Image Not Available - Scroll over the image to add to your basket.";
+    d4.appendChild(im1);
+    d4.appendChild(d2);
+    //<div class="shop-item">
+    var d5=document.createElement("DIV");
+    d5.className="shop-item";
+    d5.appendChild(d4);
+    d5.appendChild(d3);
+    //<div class="col-lg-3 col-md-4 col-sm-6">
+    var d6=document.createElement("DIV");
+    d6.className="col-lg-3 col-md-4 col-sm-6";
+    if((j%4)!=0){
+      d6.appendChild(d5);
+      d7.appendChild(d6);
+      //console.log("IF "+j);
+    }
+    else{
+      d7=document.createElement("DIV");
+      d7.className="row"
+      d6.appendChild(d5);
+      d7.appendChild(d6);
+      //console.log("ELSE "+j);
+    }
+    tabCourse.appendChild(d7);
+    j+=1;
+    //key=dish name
+    //DATA["Courses"][keys[i]][key][0]=Veg/Non Veg
+    //DATA["Courses"][keys[i]][key][1]=price
+  }
+  if(srch.length==0){
+    var hd1=document.createElement("H3");
+    hd1.className="shop-item-title";
+    hd1.innerHTML="NOTHING MATCHES YOUR SEARCH!";
+    tabCourse.appendChild(hd1);
+  }
+  openCourse(event, "search");
+}
+
 function getData2(){
   document.getElementById("display").innerHTML="";
   function imageName(nameD){
@@ -96,7 +233,6 @@ function getData2(){
 
 function checkout(){
   //window.alert("Close this webview/tab to proceed.");
-
   location.href="payment.html?userId="+uid;
   //sessionStorage.setItem('total', document.getElementById("amt").innerHTML);
 }
@@ -113,3 +249,18 @@ function syncValues(v1, val){
   document.getElementsByName(v1)[1].value=val;
   getData2();
 }
+
+window.onbeforeunload=function(e){
+  console.log(uid);
+  /*
+  $.ajax({
+  type: "GET",
+  url: "http://129.144.182.67:4000/set_confirmation/"+uid+"/"+userData,
+  success: function(data){
+  console.log('Success!');
+},
+error: function(data){
+console.log('Nope!');
+}
+});*/
+};

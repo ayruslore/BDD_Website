@@ -3,7 +3,7 @@ var DATA={"Courses":{"New Launch":{"Punjabi Aloo Paratha Combo":
 ["160","Veg"]},"Power Up Main Course":{"Aloo Mutter":
 ["160","Veg"],"Baigan Bhartha":
 ["150","Veg"],"Pindi Chole":
-["120","Veg"],"Murg Kali Mirch":
+["120","Veg"],"Murgh Kali Mirch":
 ["250","Non Veg"],"Paneer Makhanwala":
 ["250","Veg"],"Paneer Lababdar":
 ["250","Veg"],"Saagwala Paneer":

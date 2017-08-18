@@ -1,4 +1,4 @@
-var keys = [];
+var keys=[];
 for(var key in DATA["Courses"])
   keys.push(key);
 
@@ -40,7 +40,7 @@ function viewMenu(){
   function imageName(nameD){
     return nameD.replace(/ /g, '-');
   }
-  document.getElementById("dishDisplay").innerHTML="";
+  //document.getElementById("dishDisplay").innerHTML="";
   for(var i=0; i<keys.length; i++){
     var tabCourse=document.createElement("DIV");
     tabCourse.id="course"+i+"_tab";
@@ -55,7 +55,7 @@ function viewMenu(){
     //<div class="row">
     var d7=document.createElement("DIV");
     d7.className="row"
-    for (var key in DATA["Courses"][keys[i]]){
+    for(var key in DATA["Courses"][keys[i]]){
       //<div class="count-input">
       var d1=document.createElement("DIV");
       d1.className="count-input";

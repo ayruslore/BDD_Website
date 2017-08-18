@@ -63,7 +63,6 @@
 
       <!-- Mobile Menu Wrapper -->
       <div class="mobile-menu-wrapper">
-
         <!-- Toolbar -->
         <div class="toolbar">
           <div class="cart-btn">
@@ -91,7 +90,7 @@
         </header><!-- .navbar -->
         <main id="top" class="content-wrapper">
 
-          <section class="hero-slider" data-loop="true" data-autoplay="true" data-interval="7000">
+          <!--section class="hero-slider" data-loop="true" data-autoplay="true" data-interval="7000">
             <div class="inner">
               <div class="slide" style="background-image: url(img/hero-slider/01.jpg);">
                 <div class="container">
@@ -105,19 +104,19 @@
                     </a>
                   </div>
                 </div>
-              </div><!-- .slide -->
+              </div><!- .slide
               <div class="slide" style="background-image: url(img/hero-slider/02.jpg);">
                 <div class="container text-center padding-top-3x">
                   <span class="h2 from-bottom"><strong><font color="white">Delicious Food For Every Mood</font></strong></span><br>
                 </div>
-              </div><!-- .slide -->
+              </div><!- .slide
               <div class="slide" style="background-image: url(img/hero-slider/03.jpg);">
                 <div class="container padding-top-3x">
                   <span class="h1 space-top from-left"><font color="white">Authentic North Indian Favour</font></span><br>
                 </div>
-              </div><!-- .slide -->
-            </div><!-- .inner -->
-          </section><!-- .hero-slider -->
+              </div><! .slide
+            </div><!- .inner
+          </section><!- .hero-slider -->
 
           <!-- Content Wide -->
           <section class="container-fluid padding-top-3x">
@@ -129,6 +128,16 @@
                   <!-- Nav Filters -->
                   <ul class="nav-filters">
                     <h1 class="space-top-half">Menu</h1>
+                  </ul><!-- .nav-filters -->
+                </div><!-- .column -->
+                <div class="column">
+                  <!-- Nav Filters -->
+                  <ul class="nav-filters">
+                    <div id="input-outer">
+                      <input id="search_bar" type="text" onkeyup="searchDish()" placeholder="Search">
+                      <div id="clear">X</div>
+                    </div>
+                    <!--input id="search_bar" type="search" class="form-control clearable" onkeyup="searchDish()" placeholder="Search"-->
                   </ul><!-- .nav-filters -->
                 </div><!-- .column -->
                 <div class="column">
@@ -150,6 +159,7 @@
 
             <!-- Shop Catalog -->
             <section id="dishDisplay" class="container padding-bottom-3x">
+              <div class="tabcontent" id="search"></div>
             </section>
 
             <section id="cart" class="container padding-top-3x padding-bottom">
@@ -164,7 +174,6 @@
                   </p>
                   <div class="shopping-cart">
                     <section id='display'></section>
-
                   </div><!-- .shopping-cart -->
 
                   <!-- Coupon -->
