@@ -34,16 +34,6 @@ function done(){
           console.log('Nope!');
         }
       });
-      $.ajax({
-        type: "GET",
-        url: "http://129.144.182.67:4000/set_confirmation/"+uid+"/"+userData,
-        success: function(data){
-          console.log('Success!');
-        },
-        error: function(data){
-          console.log('Nope!');
-        }
-      });
     }
   }
 
