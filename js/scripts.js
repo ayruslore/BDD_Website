@@ -261,7 +261,8 @@ jQuery(document).ready(function($) {
 		var id_=$button.parent().find('.quantity').attr('name');
 		//console.log(id_);
 		getData2();
-		if(newVal!=0) syncValues(id_, newVal);
+		syncValues(id_, newVal);
+		//if(newVal!=0) syncValues(id_, newVal);
 	});
 
 	// Waves Effect (on Buttons)

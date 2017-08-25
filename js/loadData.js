@@ -54,8 +54,59 @@ function viewMenu(){
     var j=0;
     //<div class="row">
     var d7=document.createElement("DIV");
-    d7.className="row"
+    d7.className="row shopping-cart"
     for(var key in DATA["Courses"][keys[i]]){
+      //<div class="item">
+      var d1=document.createElement("DIV");
+      d1.className="item";
+      //<a href="shop-single.html" class="item-thumb">
+      var a1=document.createElement("A");
+      a1.className="item-thumb";
+      //<img src="img/cart/item02.jpg" alt="Item">
+      var im1=document.createElement("IMG");
+      im1.src="img/db/"+imageName(key)+".jpg";
+      a1.appendChild(im1);
+      d1.appendChild(a1);
+      //<div class="item-details">
+      var d2=document.createElement("DIV");
+      d2.className="item-details";
+      //<h3 class="item-title">
+      var hd1=document.createElement("H3");
+      hd1.className="item-title";
+      hd1.innerHTML=key;
+      d2.appendChild(hd1);
+      //<h4 class="item-price">
+      var hd2=document.createElement("H4");
+      hd2.className="item-price";
+      hd2.innerHTML="&#8377;"+DATA["Courses"][keys[i]][key][0];
+      d2.appendChild(hd2);
+      //<div class="count-input">
+      var d3=document.createElement("DIV");
+      d3.className="count-input";
+      //<a class="incr-btn" data-action="decrease" href="#">–</a>
+      var a2=document.createElement("A");
+      a2.className="incr-btn";
+      a2.setAttribute("data-action", "decrease");
+      a2.href='#';
+      a2.innerHTML='-';
+      d3.appendChild(a2);
+      //<input class="quantity" name="c1_10" type="text" value="0">
+      var i1=document.createElement("INPUT");
+      i1.setAttribute("type", "text");
+      i1.className="quantity";
+      i1.value=0;
+      i1.name=key;
+      d3.appendChild(i1);
+      //<a class="incr-btn" data-action="increase" href="#">+</a>
+      var a3=document.createElement("A");
+      a3.className="incr-btn";
+      a3.setAttribute("data-action", "increase");
+      a3.href='#';
+      a3.innerHTML='+';
+      d3.appendChild(a3);
+      d2.appendChild(d3);
+      d1.appendChild(d2);
+      /*
       //<div class="count-input">
       var d1=document.createElement("DIV");
       d1.className="count-input";
@@ -106,13 +157,6 @@ function viewMenu(){
         s2.innerHTML="Non Veg"
         d4.appendChild(s2);
       }
-      /*
-      //<span class="shop-label text-warning">Popular</span>
-      var s2=document.createElement("SPAN");
-      s2.className="shop-label text-warning";
-      s2.innerHTML="Recommended";
-      d4.appendChild(s2);
-      */
       //<img src="img/menu/Riveting-Desserts/Chocolate-Cake.jpg" alt="Shop item">
       var im1=document.createElement("IMG");
       im1.src="img/db/"+imageName(key)+".jpg";
@@ -139,8 +183,9 @@ function viewMenu(){
         d7.appendChild(d6);
         //console.log("ELSE "+j);
       }
+      */
+      d7.appendChild(d1);
       tabCourse.appendChild(d7);
-      j+=1;
       //key=dish name
       //DATA["Courses"][keys[i]][key][0]=Veg/Non Veg
       //DATA["Courses"][keys[i]][key][1]=price
