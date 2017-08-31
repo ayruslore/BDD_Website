@@ -50,10 +50,10 @@
       <div class="navbar-header">
 
         <!-- Site Logo -->
-        <a href="#top" class="site-logo visible-desktop">
+        <a href="#" class="site-logo visible-desktop" onclick="openCourse(event, 'course1_tab')">
           <span>Baba</span><span class="text-gray">da</span><span>Dhaba</span>
         </a><!-- site-logo.visible-desktop -->
-        <a href="#top" class="site-logo visible-mobile">
+        <a href="#" class="site-logo visible-mobile" onclick="openCourse(event, 'course1_tab')">
           <span>Baba</span>da<span>Dhaba</span>
         </a><!-- site-logo.visible-mobile -->
 
@@ -78,12 +78,13 @@
         <!-- Main Navigation -->
         <nav class="main-navigation">
           <ul class="menu">
-            <li><a href="#top">Home</a></li>
-            <li class="menu-item-has-children">
+            <x id="courseDisplay">
+            </x>
+            <!--li class="menu-item-has-children">
               <a href="#">Menu</a>
               <ul id="courseDisplay" class="sub-menu">
               </ul>
-            </li>
+            </li-->
           </ul><!-- .menu -->
         </nav><!-- .main-navigation -->
         </div><!-- .mobile-menu-wrapper -->
@@ -119,7 +120,7 @@
           </section><!- .hero-slider -->
 
           <!-- Content Wide -->
-          <section class="container-fluid padding-top-3x">
+          <section class="container-fluid padding-top">
 
             <!-- Filters Bar -->
             <section class="container padding-top">

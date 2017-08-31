@@ -19,6 +19,18 @@ function done(){
         "address":addUser
       };
       userData=JSON.stringify(userData);
+      if(document.getElementById('saveDefault').checked==true){
+        $.ajax({
+          type: "GET",
+          url: "http://129.144.182.67:4000/set_user_default/"+uid+"/"+userData,
+          success: function(data){
+            console.log("Success!");
+          },
+          error: function(data){
+            console.log('Nope!');
+          }
+        });        
+      }
       alert("Close the webview to proceed! You'll receive a confirmation message soon.");
       document.getElementsByTagName("BODY")[0].style.display="none";
       $.ajax({
@@ -42,7 +54,6 @@ function done(){
 var price, nameUser, phoneUser, addUser;
 
 function amount(){
-  var adrs;
   $.ajax({
     type: "GET",
     url: "http://129.144.182.67:4000/get_location_total/"+uid,
@@ -50,10 +61,25 @@ function amount(){
       data=JSON.stringify(data);
       data=JSON.parse(data);
       price=data["total"];
-      adrs=data["address"];
-      console.log(price+" "+adrs);
+      console.log(price);
       document.getElementById('amt').innerHTML="&#8377;"+price;
-      document.getElementsByName('address')[0].value=adrs;
+    },
+    error: function(data){
+      console.log('Nope!');
+    }
+  });
+}
+
+function userData(){
+  $.ajax({
+    type: "GET",
+    url: "http://129.144.182.67:4000/get_user_default/"+uid,
+    success: function(data){
+      data=JSON.stringify(data);
+      data=JSON.parse(data);
+      document.getElementsByName('name')[0].value=data['name'];
+      document.getElementsByName('phone')[0].value=data['number'];
+      document.getElementsByName('address')[0].value=data['address'];
     },
     error: function(data){
       console.log('Nope!');

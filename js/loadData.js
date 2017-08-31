@@ -11,7 +11,10 @@ function courses(){
   for(var i=0; i<keys.length; i++){
     var l1=document.createElement("LI");
     var a1=document.createElement("A");
-    a1.innerHTML=keys[i]+"<sup>"+Object.keys(DATA["Courses"][keys[i]]).length+"</sup>";
+    a1.innerHTML=keys[i];
+    var s1=document.createElement("SUP");
+    s1.innerHTML=Object.keys(DATA["Courses"][keys[i]]).length;
+    a1.appendChild(s1);
     a1.href="#";
     a1.id="course"+i;
     a1.onclick=function(){
