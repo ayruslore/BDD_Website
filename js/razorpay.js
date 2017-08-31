@@ -22,20 +22,20 @@ function done(){
       if(document.getElementById('saveDefault').checked==true){
         $.ajax({
           type: "GET",
-          url: "http://129.144.182.67:4000/set_user_default/"+uid+"/"+userData,
+          url: redisDb+"/set_user_default/"+uid+"/"+userData,
           success: function(data){
             console.log("Success!");
           },
           error: function(data){
             console.log('Nope!');
           }
-        });        
+        });
       }
       alert("Close the webview to proceed! You'll receive a confirmation message soon.");
       document.getElementsByTagName("BODY")[0].style.display="none";
       $.ajax({
         type: "GET",
-        url: "https://babadadhaba1-a432393.apaas.us2.oraclecloud.com/confirm",
+        url: nodejsScript+"/confirm",
         data: {
           'Id': uid
         },
@@ -56,7 +56,7 @@ var price, nameUser, phoneUser, addUser;
 function amount(){
   $.ajax({
     type: "GET",
-    url: "http://129.144.182.67:4000/get_location_total/"+uid,
+    url: redisDb+"/get_location_total/"+uid,
     success: function(data){
       data=JSON.stringify(data);
       data=JSON.parse(data);
@@ -73,7 +73,7 @@ function amount(){
 function userData(){
   $.ajax({
     type: "GET",
-    url: "http://129.144.182.67:4000/get_user_default/"+uid,
+    url: redisDb+"/get_user_default/"+uid,
     success: function(data){
       data=JSON.stringify(data);
       data=JSON.parse(data);
@@ -99,7 +99,7 @@ function razorpay(){
       //save payment id
       $.ajax({
         type: "GET",
-        url: "http://129.144.182.67:4000/"+uid+"/set_payment_key/"+response.razorpay_payment_id,
+        url: redisDb+"/"+uid+"/set_payment_key/"+response.razorpay_payment_id,
         success: function(data){
           //console.log('Success!');
         },
@@ -111,7 +111,7 @@ function razorpay(){
       //save address
       $.ajax({
         type: "GET",
-        url: "http://129.144.182.67:4000/"+uid+"/set_address/payment/"+lat+","+long,
+        url: redisDb+"/"+uid+"/set_address/payment/"+lat+","+long,
         success: function(data){
           //console.log('Success!');
         },

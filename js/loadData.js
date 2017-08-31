@@ -12,9 +12,6 @@ function courses(){
     var l1=document.createElement("LI");
     var a1=document.createElement("A");
     a1.innerHTML=keys[i];
-    var s1=document.createElement("SUP");
-    s1.innerHTML=Object.keys(DATA["Courses"][keys[i]]).length;
-    a1.appendChild(s1);
     a1.href="#";
     a1.id="course"+i;
     a1.onclick=function(){
@@ -29,7 +26,7 @@ function courses(){
 function courses2(){
   for(var i=0; i<keys.length; i++){
     var a1=document.createElement("A");
-    a1.innerHTML=keys[i]+"<sup>"+Object.keys(DATA["Courses"][keys[i]]).length+"</sup>";
+    a1.innerHTML=keys[i];
     a1.href="#";
     a1.id="course"+i+"_";
     a1.onclick=function(){
@@ -43,7 +40,7 @@ function viewMenu(){
   function imageName(nameD){
     return nameD.replace(/ /g, '-');
   }
-  //document.getElementById("dishDisplay").innerHTML="";
+  document.getElementById("dishDisplay").innerHTML="";
   for(var i=0; i<keys.length; i++){
     var tabCourse=document.createElement("DIV");
     tabCourse.id="course"+i+"_tab";
@@ -52,13 +49,14 @@ function viewMenu(){
     hed.className="toolbar-title";
     hed.innerHTML=keys[i];
     tabCourse.appendChild(hed);
-    document.getElementById("dishDisplay").appendChild(tabCourse);
     //keys[i]=course
     var j=0;
     //<div class="row">
     var d7=document.createElement("DIV");
     d7.className="row shopping-cart"
     for(var key in DATA["Courses"][keys[i]]){
+      if(veg==1 & DATA["Courses"][keys[i]][key][1]=="Non Veg")
+        continue;//sole.log(key);
       //<div class="item">
       var d1=document.createElement("DIV");
       d1.className="item";
@@ -77,6 +75,10 @@ function viewMenu(){
       var hd1=document.createElement("H3");
       hd1.className="item-title";
       hd1.innerHTML=key;
+      if(DATA["Courses"][keys[i]][key][1]=="Veg")
+        hd1.style.color="green";
+      else
+        hd1.style.color="red";
       d2.appendChild(hd1);
       //<h4 class="item-price">
       var hd2=document.createElement("H4");
@@ -193,5 +195,24 @@ function viewMenu(){
       //DATA["Courses"][keys[i]][key][0]=Veg/Non Veg
       //DATA["Courses"][keys[i]][key][1]=price
     }
+    document.getElementById("dishDisplay").appendChild(tabCourse);
+  }
+  openCourse(event, 'course1_tab');
+}
+
+function vegToggleMenu(){
+  if(veg==0){
+    veg=1;
+    document.getElementById("vegToggle").classList.remove('btn-info');
+    document.getElementById("vegToggle").classList.add('btn-success');
+    document.getElementById("vegToggle").innerHTML="Veg Dishes only";
+    viewMenu();
+  }
+  else{
+    veg=0;
+    document.getElementById("vegToggle").classList.remove('btn-success');
+    document.getElementById("vegToggle").classList.add('btn-info');
+    document.getElementById("vegToggle").innerHTML="All Dishes";
+    viewMenu();
   }
 }

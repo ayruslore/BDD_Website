@@ -6,7 +6,7 @@
   <script src="js/BabaDaDhaba.js"></script>
   <meta charset="utf-8">
   <title>Baba da Dhaba</title>
-
+  <script src="js/vars.js"></script>
   <!--Mobile Specific Meta Tag-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <link href="css/style.css" rel="stylesheet" type="text/css">
@@ -50,10 +50,10 @@
       <div class="navbar-header">
 
         <!-- Site Logo -->
-        <a href="#" class="site-logo visible-desktop" onclick="openCourse(event, 'course1_tab')">
+        <a href="#menu" class="site-logo visible-desktop" onclick="openCourse(event, 'course1_tab')">
           <span>Baba</span><span class="text-gray">da</span><span>Dhaba</span>
         </a><!-- site-logo.visible-desktop -->
-        <a href="#" class="site-logo visible-mobile" onclick="openCourse(event, 'course1_tab')">
+        <a href="#menu" class="site-logo visible-mobile" onclick="openCourse(event, 'course1_tab')">
           <span>Baba</span>da<span>Dhaba</span>
         </a><!-- site-logo.visible-mobile -->
 
@@ -78,13 +78,7 @@
         <!-- Main Navigation -->
         <nav class="main-navigation">
           <ul class="menu">
-            <x id="courseDisplay">
-            </x>
-            <!--li class="menu-item-has-children">
-              <a href="#">Menu</a>
-              <ul id="courseDisplay" class="sub-menu">
-              </ul>
-            </li-->
+            <x id="courseDisplay"></x>
           </ul><!-- .menu -->
         </nav><!-- .main-navigation -->
         </div><!-- .mobile-menu-wrapper -->
@@ -145,16 +139,9 @@
                     <!--input id="search_bar" type="search" class="form-control clearable" onkeyup="searchDish()" placeholder="Search"-->
                   </ul><!-- .nav-filters -->
                 </div><!-- .column -->
-                <!--div class="column">
-                  <label class="checkbox">
-                    <div class="icheckbox">
-                      <input type="checkbox" style="position: absolute; opacity: 0;">
-                        <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
-                        </ins>
-                    </div>
-                    Veg
-                  </label>
-                </div--->
+                <div class="column">
+                  <a href="#" id="vegToggle" onclick="vegToggleMenu()" class="btn btn-pill btn-sm btn-info waves-effect waves-light">All Dishes</a>
+                </div>
                 <div class="column">
                   <a href="#filters" class="filters-toggle active" data-toggle="filters">
                     <i class="material-icons filter_list"></i>
@@ -174,7 +161,8 @@
             </section><!-- .container -->
 
             <!-- Shop Catalog -->
-            <section id="dishDisplay" class="container padding-bottom-3x">
+            <section class="container padding-bottom-3x">
+              <section id="dishDisplay"></section>
               <div class="tabcontent" id="search"></div>
               <div id="cart" class="tabcontent">
 

@@ -1,6 +1,5 @@
 var cartJSON;
 var uid;
-var redisDb="http://129.144.182.67:4000/cart/";
 
 function sender(dish, qty){
   cartJSON={};
@@ -31,7 +30,7 @@ function getURL(){
 function finalSend(){
   $.ajax({
     type: "GET",
-    url: redisDb+uid+"/replace/"+cartJSON,
+    url: redisDb+"/cart/"+uid+"/replace/"+cartJSON,
     data: "",
     success: function(data){
       //console.log('Success!');
@@ -45,7 +44,7 @@ function finalSend(){
 function populate(){
   $.ajax({
     type: "GET",
-    url: redisDb+uid+"/show",
+    url: redisDb+"/cart/"+uid+"/show",
     success: function(data){
       function toTitleCase(str){
         return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});

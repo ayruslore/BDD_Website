@@ -19,8 +19,14 @@ function searchDish(){
     //console.log(DATA["Courses"][keys[i]]);
     for(var key in DATA["Courses"][keys[i]]){
       if((key.toUpperCase()).indexOf(searchField.toUpperCase())!=-1){
-        srch.push(key);
-        srchCourse.push(keys[i]);
+        if(veg==1 & DATA["Courses"][keys[i]][key][1]=="Veg"){
+          srch.push(key);
+          srchCourse.push(keys[i]);
+        }
+        else if(veg==0){
+          srch.push(key);
+          srchCourse.push(keys[i]);
+        }
       }
     }
   }
@@ -55,6 +61,10 @@ function searchDish(){
     var hd1=document.createElement("H3");
     hd1.className="item-title";
     hd1.innerHTML=srch[i];
+    if(DATA["Courses"][srchCourse[i]][srch[i]][1]=="Veg")
+      hd1.style.color="green";
+    else
+      hd1.style.color="red";
     d2.appendChild(hd1);
     //<h4 class="item-price">
     var hd2=document.createElement("H4");
@@ -307,7 +317,7 @@ window.onbeforeunload=function(e){
   console.log(uid);
   $.ajax({
     type: "GET",
-    url: "https://babadadhaba1-a432393.apaas.us2.oraclecloud.com/confirm",
+    url: nodejsScript+"/confirm",
     data: {
       'show': uid
     },
