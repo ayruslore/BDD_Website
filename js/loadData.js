@@ -53,7 +53,7 @@ function viewMenu(){
     var j=0;
     //<div class="row">
     var d7=document.createElement("DIV");
-    d7.className="row shopping-cart"
+    d7.className="shopping-cart"
     for(var key in DATA["Courses"][keys[i]]){
       if(veg==1 & DATA["Courses"][keys[i]][key][1]=="Non Veg")
         continue;//sole.log(key);
@@ -67,13 +67,13 @@ function viewMenu(){
       var im1=document.createElement("IMG");
       im1.src="img/db/"+imageName(key)+".jpg";
       a1.appendChild(im1);
-      d1.appendChild(a1);
+      //d1.appendChild(a1);
       //<div class="item-details">
       var d2=document.createElement("DIV");
-      d2.className="item-details";
+      d2.className="item-details filters-bar";
       //<h3 class="item-title">
       var hd1=document.createElement("H3");
-      hd1.className="item-title";
+      hd1.className="item-title column";
       hd1.innerHTML=key;
       if(DATA["Courses"][keys[i]][key][1]=="Veg")
         hd1.style.color="green";
@@ -82,12 +82,12 @@ function viewMenu(){
       d2.appendChild(hd1);
       //<h4 class="item-price">
       var hd2=document.createElement("H4");
-      hd2.className="item-price";
+      hd2.className="item-price column";
       hd2.innerHTML="&#8377;"+DATA["Courses"][keys[i]][key][0];
       d2.appendChild(hd2);
       //<div class="count-input">
       var d3=document.createElement("DIV");
-      d3.className="count-input";
+      d3.className="count-input column";
       //<a class="incr-btn" data-action="decrease" href="#">–</a>
       var a2=document.createElement("A");
       a2.className="incr-btn";

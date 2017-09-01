@@ -53,13 +53,13 @@ function searchDish(){
     var im1=document.createElement("IMG");
     im1.src="img/db/"+imageName(srch[i])+".jpg";
     a1.appendChild(im1);
-    d1.appendChild(a1);
+    //d1.appendChild(a1);
     //<div class="item-details">
     var d2=document.createElement("DIV");
-    d2.className="item-details";
+    d2.className="item-details filters-bar";
     //<h3 class="item-title">
     var hd1=document.createElement("H3");
-    hd1.className="item-title";
+    hd1.className="item-title column";
     hd1.innerHTML=srch[i];
     if(DATA["Courses"][srchCourse[i]][srch[i]][1]=="Veg")
       hd1.style.color="green";
@@ -68,12 +68,12 @@ function searchDish(){
     d2.appendChild(hd1);
     //<h4 class="item-price">
     var hd2=document.createElement("H4");
-    hd2.className="item-price";
+    hd2.className="item-price column";
     hd2.innerHTML="&#8377;"+DATA["Courses"][srchCourse[i]][srch[i]][0];
     d2.appendChild(hd2);
     //<div class="count-input">
     var d3=document.createElement("DIV");
-    d3.className="count-input";
+    d3.className="count-input column";
     //<a class="incr-btn" data-action="decrease" href="#">–</a>
     var a2=document.createElement("A");
     a2.className="incr-btn";
@@ -222,24 +222,28 @@ function getData2(){
     var im1=document.createElement("IMG");
     im1.src="img/db/"+imageName(dish[i])+".jpg";
     a1.appendChild(im1);
-    d1.appendChild(a1);
+    //d1.appendChild(a1);
     //<div class="item-details">
     var d2=document.createElement("DIV");
-    d2.className="item-details";
+    d2.className="item-details filters-bar";
     //<h3 class="item-title">
     var hd1=document.createElement("H3");
-    hd1.className="item-title";
+    hd1.className="item-title column";
     hd1.innerHTML=dish[i];
+    if(DATA["Courses"][course[i]][dish[i]][1]=="Veg")
+      hd1.style.color="green";
+    else
+      hd1.style.color="red";
     d2.appendChild(hd1);
     //<h4 class="item-price">
     var hd2=document.createElement("H4");
-    hd2.className="item-price";
+    hd2.className="item-price column";
     hd2.innerHTML="&#8377;"+DATA["Courses"][course[i]][dish[i]][0]*qty[i];
     total+=Number(DATA["Courses"][course[i]][dish[i]][0]*qty[i]);
     d2.appendChild(hd2);
     //<div class="count-input">
     var d3=document.createElement("DIV");
-    d3.className="count-input";
+    d3.className="count-input column";
     //<a class="incr-btn" data-action="decrease" href="#">–</a>
     var a2=document.createElement("A");
     a2.className="incr-btn";
@@ -277,7 +281,7 @@ function getData2(){
     var i2=document.createElement("I");
     i2.className="material-icons remove_shopping_cart";
     a4.appendChild(i2);
-    d1.appendChild(a4);
+    //d1.appendChild(a4);
     document.getElementById("display").appendChild(d1);
   }
   document.getElementById("amt").innerHTML="&#8377;"+total;
