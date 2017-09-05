@@ -68,7 +68,8 @@ function populate(){
             if(temp==key){
               //console.log(key);
               var x=document.getElementsByName(key);
-              x[0].value=data[i];
+              //console.log(data[i][1]);
+              x[0].value=data[i][1];
               getData2();
             }
           }
