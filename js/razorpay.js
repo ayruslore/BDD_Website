@@ -13,10 +13,24 @@ function done(){
   else{
     if(nameUser!="" & addUser!=""){
       var userData={
-        "name":nameUser,
-        "number":phoneUser,
-        "address":addUser
+        "name": nameUser,
+        "number": phoneUser,
+        "address": addUser
       };
+      $.ajax({
+        type: "GET",
+        url: nodejsScript+"/confirm",
+        data: {
+          'Id': uid
+        },
+        success: function(data){
+          console.log("ID sent!");
+          console.log(data);
+        },
+        error: function(data){
+          console.log('Nope!');
+        }
+      });
       userData=JSON.stringify(userData);
       console.log(userData);
       if(document.getElementById('saveDefault').checked==true){
@@ -33,19 +47,6 @@ function done(){
       }
       alert("Close the webview to proceed! You'll receive a confirmation message soon.");
       document.getElementsByTagName("BODY")[0].style.display="none";
-      $.ajax({
-        type: "GET",
-        url: nodejsScript+"/confirm",
-        data: {
-          'Id': uid
-        },
-        success: function(data){
-          console.log(data);
-        },
-        error: function(data){
-          console.log('Nope!');
-        }
-      });
     }
   }
 
