@@ -203,16 +203,16 @@ function viewMenu(){
 function vegToggleMenu(){
   if(veg==0){
     veg=1;
-    document.getElementById("vegToggle").classList.remove('btn-info');
-    document.getElementById("vegToggle").classList.add('btn-success');
-    document.getElementById("vegToggle").innerHTML="Veg Dishes only";
+    document.getElementById("vegToggle").classList.remove('btn-success');
+    document.getElementById("vegToggle").classList.add('btn-info');
+    document.getElementById("vegToggle").innerHTML="All Dishes";
     viewMenu();
   }
   else{
     veg=0;
-    document.getElementById("vegToggle").classList.remove('btn-success');
-    document.getElementById("vegToggle").classList.add('btn-info');
-    document.getElementById("vegToggle").innerHTML="All Dishes";
+    document.getElementById("vegToggle").classList.remove('btn-info');
+    document.getElementById("vegToggle").classList.add('btn-success');
+    document.getElementById("vegToggle").innerHTML="Veg Dishes only";
     viewMenu();
   }
 }
