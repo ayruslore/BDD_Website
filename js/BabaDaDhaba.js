@@ -3,17 +3,17 @@ var DATA={"Courses":{"New Launch":{"Punjabi Aloo Paratha Combo":
 ["160","Veg"]},"Power Up Main Course":{"Aloo Mutter":
 ["160","Veg"],"Baigan Bhartha":
 ["150","Veg"],"Pindi Chole":
-["120","Veg"],"Murgh Kali Mirch":
+["120","Veg"],"Murgh Tikka":
 ["250","Non Veg"],"Paneer Makhanwala":
 ["250","Veg"],"Paneer Lababdar":
 ["250","Veg"],"Saagwala Paneer":
 ["250","Veg"],"Subzi Meloni":
 ["180","Veg"],"Dal Makhani":
-["160","Veg"],"Dal Sath Salam":
+["160","Veg"],"Dal Saath Salam":
 ["120","Veg"],"Chicken Lababdar":
 ["250","Non Veg"],"Chicken Makhanwala":
 ["250","Non Veg"],"Mutton Rogan Josh":
-["300","Non Veg"]},"Tank Up On Rice":{"Steamed Rice":
+["300","Non Veg"]},"Tank Up On Rice":{"Plain Rice":
 ["90","Veg"],"Jeera Rice":
 ["120","Veg"],"Chicken Biryani":
 ["220","Non Veg"],"Mutton Biryani":
@@ -29,13 +29,13 @@ var DATA={"Courses":{"New Launch":{"Punjabi Aloo Paratha Combo":
 ["90","Veg"],"B&W Chocolate Cake (Eggless)":
 ["150","Veg"]},"Super Coolants":{"Shikanji":
 ["30", "Veg"],"Chaas":
-["40", "Veg"],"Lassi-Sweet":
-["75","Veg"],"Lassi-Salt":
-["75", "Veg"],"Water Bottle (500ml)":
-["20","Veg"],"Water Bottle (1l)":
+["40", "Veg"],"Lassi Sweet":
+["75","Veg"],"Lassi Salted":
+["75", "Veg"],"Water Bottle 500ml":
+["20","Veg"],"Water Bottle 1l":
 ["40", "Veg"],"Soft Drink 250ml":
 ["30", "Veg"], "Soft Drink 500ml":
-["44", "Veg"], "Diet Coke 330ml":
+["44", "Veg"], "Diet Coke":
 ["45", "Veg"]},"Top Gear Combos":{"Dilli Combo (Veg)":
 ["280","Veg"],"Amritsari Combo (Veg)":
 ["280","Veg"],"Lucknowi Combo (Veg)":

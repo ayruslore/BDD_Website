@@ -5,7 +5,6 @@ function done(){
   nameUser=document.getElementsByName('name')[0].value;
   phoneUser=Number(document.getElementsByName('phone')[0].value);
   addUser=document.getElementsByName('address')[0].value;
-  //console.log("Latitude: "+lat+"\nLongitude: "+long);
   if(nameUser=="" | addUser=="" | phoneUser=="")
     alert("Fill in the details to proceed.");
   else if(getlength(phoneUser)!=10){
@@ -19,6 +18,7 @@ function done(){
         "address":addUser
       };
       userData=JSON.stringify(userData);
+      console.log(userData);
       if(document.getElementById('saveDefault').checked==true){
         $.ajax({
           type: "GET",
@@ -95,16 +95,16 @@ function razorpay(){
     "description": "Payment for your food order",
     "image": "",
     "handler": function (response){
-      //console.log(response);
+      console.log(response);
       //save payment id
       $.ajax({
         type: "GET",
         url: redisDb+"/"+uid+"/set_payment_key/"+response.razorpay_payment_id,
         success: function(data){
-          //console.log('Success!');
+          console.log('Success!');
         },
         error: function(data){
-          //console.log('Nope!');
+          console.log('Nope!');
         }
       });
       //alert(response.razorpay_payment_id);
@@ -113,10 +113,10 @@ function razorpay(){
         type: "GET",
         url: redisDb+"/"+uid+"/set_address/payment/"+lat+","+long,
         success: function(data){
-          //console.log('Success!');
+          console.log('Success!');
         },
         error: function(data){
-          //console.log('Nope!');
+          console.log('Nope!');
         }
       });
       //to NodeJS script
@@ -128,10 +128,10 @@ function razorpay(){
           'Id': uid
         },
         success: function(data){
-          //console.log(data);
+          console.log(data);
         },
         error: function(data){
-          //console.log('Nope!');
+          console.log('Nope!');
         }
       });
       alert("Close webview to proceed!");

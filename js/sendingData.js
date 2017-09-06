@@ -6,7 +6,7 @@ function sender(dish, qty){
   for(var i=0; i<dish.length; i++)
     cartJSON[dish[i].replace(/ /g, '_').toLowerCase()]=qty[i];
   cartJSON=JSON.stringify(cartJSON);
-  //console.log(cartJSON);
+  console.log(cartJSON);
 }
 
 function getURL(){
@@ -23,8 +23,8 @@ function getURL(){
           break;
         }
       }
-  //console.log(str);
-  //console.log(uid);
+  console.log(str);
+  console.log(uid);
 }
 
 function finalSend(){
@@ -33,10 +33,10 @@ function finalSend(){
     url: redisDb+"/cart/"+uid+"/replace/"+cartJSON,
     data: "",
     success: function(data){
-      //console.log('Success!');
+      console.log('Success!');
     },
     error: function(data){
-      //console.log('Nope!');
+      console.log('Nope!');
     }
   });
 }
@@ -53,7 +53,7 @@ function populate(){
       data=data.replace('_', ' ');
       data=toTitleCase(data);
       data=JSON.parse(data);
-      //console.log(data);
+      console.log(data);
       for(var i in data){
         var temp=i;
         if(i.endsWith("Nonveg"))
@@ -62,13 +62,13 @@ function populate(){
           temp=i.replace("Veg", "(Veg)");
         else if(i=="B And W Chocolate Cake Eggless")
           temp="B&W Chocolate Cake (Eggless)";
-        //console.log(i);
+        console.log(i);
         for(var j=0; j<keys.length; j++){
           for(var key in DATA["Courses"][keys[j]]){
             if(temp==key){
-              //console.log(key);
+              console.log(key);
               var x=document.getElementsByName(key);
-              //console.log(data[i][1]);
+              console.log(data[i][1]);
               x[0].value=data[i][1];
               getData2();
             }

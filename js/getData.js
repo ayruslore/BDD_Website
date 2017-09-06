@@ -14,9 +14,9 @@ function searchDish(){
     return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
   }
   var searchField=document.getElementById('search_bar').value;
-  //console.log(searchField);
+  console.log(searchField);
   for(var i=0; i<keys.length; i++){
-    //console.log(DATA["Courses"][keys[i]]);
+    console.log(DATA["Courses"][keys[i]]);
     for(var key in DATA["Courses"][keys[i]]){
       if((key.toUpperCase()).indexOf(searchField.toUpperCase())!=-1){
         if(veg==1 & DATA["Courses"][keys[i]][key][1]=="Veg"){
@@ -166,14 +166,14 @@ function searchDish(){
     if((j%4)!=0){
       d6.appendChild(d5);
       d7.appendChild(d6);
-      //console.log("IF "+j);
+      console.log("IF "+j);
     }
     else{
       d7=document.createElement("DIV");
       d7.className="row"
       d6.appendChild(d5);
       d7.appendChild(d6);
-      //console.log("ELSE "+j);
+      console.log("ELSE "+j);
     }
     tabCourse.appendChild(d7);
     j+=1;
@@ -298,7 +298,7 @@ function checkout(){
 }
 
 function removeItem(obj){
-  //console.log(obj.parentNode.childNodes[1].childNodes[2].childNodes[1]);
+  console.log(obj.parentNode.childNodes[1].childNodes[2].childNodes[1]);
   var v=(obj.parentNode.childNodes[1].childNodes[2].childNodes[1].name);
   syncValues(v, 0);
   getData2();
