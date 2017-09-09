@@ -54,6 +54,7 @@ function populate(){
       data=toTitleCase(data);
       data=JSON.parse(data);
       console.log(data);
+      data=JSON.parse(data);
       for(var i in data){
         var temp=i;
         if(i.endsWith("Nonveg"))

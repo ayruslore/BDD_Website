@@ -17,3 +17,38 @@ function openCourse(event, courseName) {
     document.getElementById(courseName).style.display = "block";
     //event.currentTarget.className += " active";
 }
+
+var menuButton=0;
+function menuToggle123(){
+  var temp=document.getElementById("menuToggle");
+  if(menuButton==0){
+    openCourse(event, 'cart');
+    temp.innerHTML='';
+    var cartButton=document.createElement("SPAN");
+    var cartLogo=document.createElement("I");
+    cartLogo.className="material-icons shopping_basket";
+    cartLogo.onclick=function(){
+      openCourse(event, 'cart');
+    }
+    var quant=document.createElement("SUP");
+    var quant2=document.createElement("SPAN");
+    quant2.id="item_qty";
+    quant2.className="count";
+    quant2.innerHTML=0;
+    quant.appendChild(quant2);
+    cartLogo.appendChild(quant);
+    cartButton.appendChild(cartLogo);
+    temp.appendChild(cartButton);
+    menuButton=1;
+  }else if(menuButton==1){
+    openCourse(event, 'course1_tab');
+    temp.innerHTML='';
+    var cartLogo=document.createElement("I");
+    cartLogo.className="material-icons reorder";
+    cartLogo.onclick=function(){
+      openCourse(event, 'cart');
+    }
+    temp.appendChild(cartLogo);
+    menuButton=0;
+  }
+}

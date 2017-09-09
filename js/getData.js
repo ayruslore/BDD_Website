@@ -49,11 +49,13 @@ function searchDish(){
     //<a href="shop-single.html" class="item-thumb">
     var a1=document.createElement("A");
     a1.className="item-thumb";
-    //<img src="img/cart/item02.jpg" alt="Item">
+    /*
+    <img src="img/cart/item02.jpg" alt="Item">
     var im1=document.createElement("IMG");
     im1.src="img/db/"+imageName(srch[i])+".jpg";
     a1.appendChild(im1);
-    //d1.appendChild(a1);
+    d1.appendChild(a1);
+    */
     //<div class="item-details">
     var d2=document.createElement("DIV");
     d2.className="item-details filters-bar";
@@ -218,11 +220,13 @@ function getData2(){
     //<a href="shop-single.html" class="item-thumb">
     var a1=document.createElement("A");
     a1.className="item-thumb";
-    //<img src="img/cart/item02.jpg" alt="Item">
+    /*
+    <img src="img/cart/item02.jpg" alt="Item">
     var im1=document.createElement("IMG");
     im1.src="img/db/"+imageName(dish[i])+".jpg";
     a1.appendChild(im1);
-    //d1.appendChild(a1);
+    d1.appendChild(a1);
+    */
     //<div class="item-details">
     var d2=document.createElement("DIV");
     d2.className="item-details filters-bar";

@@ -21,7 +21,10 @@ function done(){
         type: "GET",
         url: nodejsScript+"/confirm",
         data: {
-          'Id': uid
+          'Id': uid,
+          "name": nameUser,
+          "number": phoneUser,
+          "address": addUser
         },
         success: function(data){
           console.log("ID sent!");

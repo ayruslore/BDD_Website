@@ -58,7 +58,12 @@
         </a><!-- site-logo.visible-mobile -->
 
         <!-- Mobile Menu Toggle -->
-        <a href="#" class="mobile-menu-toggle"><i class="material-icons reorder"></i></a>
+        <a href="#" id="menuToggle" onclick="menuToggle123()">
+          <i>
+            <span onclick="menuToggle123()" class="material-icons shopping_basket"></span>
+            <!--span id="item_qty" class="count">0</span-->
+          </i>
+        </a>
       </div><!-- .navbar-header -->
 
       <!-- Mobile Menu Wrapper -->
@@ -69,7 +74,7 @@
             <a href="#" onclick="getData2(); openCourse(event, 'cart')">
               <i>
                 <span class="material-icons shopping_basket"></span>
-                <!--span id="item_qty" class="count">0</span-->
+                <span id="item_qty" class="count">0</span>
               </i>
             </a>
           </div><!-- .cart-btn -->
@@ -119,16 +124,6 @@
             <!-- Filters Bar -->
             <section class="container padding-top">
               <div id="menu" class="filters-bar space-top-half">
-                <div class="column">
-                  <!-- Nav Filters -->
-                  <ul class="nav-filters">
-                    <li><a href="#" class="space-top-half" onclick="openCourse(event, 'course1_tab')">Menu</a></li>
-                    <li>
-                      <a href="#" class="space-top-half" onclick="openCourse(event, 'cart')">Cart
-                      <sup><span id="item_qty" class="count">0</span></sup></a>
-                    </li>
-                  </ul><!-- .nav-filters -->
-                </div><!-- .column -->
                 <div class="column">
                   <!-- Nav Filters -->
                   <ul class="nav-filters">
