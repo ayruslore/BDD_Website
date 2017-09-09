@@ -20,6 +20,7 @@ function openCourse(event, courseName) {
 
 var menuButton=0;
 function menuToggle123(){
+  getData2();
   var temp=document.getElementById("menuToggle");
   if(menuButton==0){
     openCourse(event, 'course1_tab');

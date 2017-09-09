@@ -235,18 +235,20 @@ function getData2(){
     //<h3 class="item-title">
     var hd1=document.createElement("H3");
     hd1.className="item-title column";
-    hd1.innerHTML=dish[i]+" (&#8377;"+DATA["Courses"][course[i]][dish[i]][0]+")";
+    hd1.innerHTML=dish[i]+" (&#8377;"+DATA["Courses"][course[i]][dish[i]][0]*qty[i]+")";
     if(DATA["Courses"][course[i]][dish[i]][1]=="Veg")
       hd1.style.color="green";
     else
       hd1.style.color="red";
     d2.appendChild(hd1);
+    /*
     //<h4 class="item-price">
     var hd2=document.createElement("H4");
     hd2.className="item-price column";
     hd2.innerHTML="&#8377;"+DATA["Courses"][course[i]][dish[i]][0]*qty[i];
-    total+=Number(DATA["Courses"][course[i]][dish[i]][0]*qty[i]);
     d2.appendChild(hd2);
+    */
+    total+=Number(DATA["Courses"][course[i]][dish[i]][0]*qty[i]);
     //<div class="count-input">
     var d3=document.createElement("DIV");
     d3.className="count-input column";
