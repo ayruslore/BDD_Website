@@ -62,7 +62,6 @@ function amount(){
     type: "GET",
     url: redisDb+"/get_location_total/"+uid,
     success: function(data){
-      data=JSON.stringify(data);
       data=JSON.parse(data);
       price=data["total"];
       console.log(price);
@@ -79,9 +78,10 @@ function userData(){
     type: "GET",
     url: redisDb+"/get_user_default/"+uid,
     success: function(data){
-      data=JSON.stringify(data);
+      console.log(data);
       data=JSON.parse(data);
       document.getElementsByName('name')[0].value=data['name'];
+      console.log(data['name']);
       document.getElementsByName('phone')[0].value=data['number'];
       document.getElementsByName('address')[0].value=data['address'];
     },
