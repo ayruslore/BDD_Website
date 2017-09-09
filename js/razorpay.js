@@ -81,9 +81,11 @@ function userData(){
       console.log(data);
       data=JSON.parse(data);
       document.getElementsByName('name')[0].value=data['name'];
-      console.log(data['name']);
-      document.getElementsByName('phone')[0].value=data['number'];
-      document.getElementsByName('address')[0].value=data['address'];
+      //console.log(data['name']);
+      if(data['number']!=undefined)
+        document.getElementsByName('phone')[0].value=data['number'];
+      if(data['address']!=undefined)
+        document.getElementsByName('address')[0].value=data['address'];
     },
     error: function(data){
       console.log('Nope!');
