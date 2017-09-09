@@ -62,17 +62,19 @@ function searchDish(){
     //<h3 class="item-title">
     var hd1=document.createElement("H3");
     hd1.className="item-title column";
-    hd1.innerHTML=srch[i];
+    hd1.innerHTML=srch[i]+" (&#8377;"+DATA["Courses"][srchCourse[i]][srch[i]][0]+")";
     if(DATA["Courses"][srchCourse[i]][srch[i]][1]=="Veg")
       hd1.style.color="green";
     else
       hd1.style.color="red";
     d2.appendChild(hd1);
+    /*
     //<h4 class="item-price">
     var hd2=document.createElement("H4");
     hd2.className="item-price column";
     hd2.innerHTML="&#8377;"+DATA["Courses"][srchCourse[i]][srch[i]][0];
     d2.appendChild(hd2);
+    */
     //<div class="count-input">
     var d3=document.createElement("DIV");
     d3.className="count-input column";
@@ -233,7 +235,7 @@ function getData2(){
     //<h3 class="item-title">
     var hd1=document.createElement("H3");
     hd1.className="item-title column";
-    hd1.innerHTML=dish[i];
+    hd1.innerHTML=dish[i]+" (&#8377;"+DATA["Courses"][course[i]][dish[i]][0]+")";
     if(DATA["Courses"][course[i]][dish[i]][1]=="Veg")
       hd1.style.color="green";
     else

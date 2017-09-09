@@ -22,7 +22,7 @@ var menuButton=0;
 function menuToggle123(){
   var temp=document.getElementById("menuToggle");
   if(menuButton==0){
-    openCourse(event, 'cart');
+    openCourse(event, 'course1_tab');
     temp.innerHTML='';
     var cartButton=document.createElement("SPAN");
     var cartLogo=document.createElement("I");
@@ -41,7 +41,7 @@ function menuToggle123(){
     temp.appendChild(cartButton);
     menuButton=1;
   }else if(menuButton==1){
-    openCourse(event, 'course1_tab');
+    openCourse(event, 'cart');
     temp.innerHTML='';
     var cartLogo=document.createElement("I");
     cartLogo.className="material-icons reorder";

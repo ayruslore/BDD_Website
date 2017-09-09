@@ -76,17 +76,19 @@ function viewMenu(){
       //<h3 class="item-title">
       var hd1=document.createElement("H3");
       hd1.className="item-title column";
-      hd1.innerHTML=key;
+      hd1.innerHTML=key+" (&#8377;"+DATA["Courses"][keys[i]][key][0]+")";
       if(DATA["Courses"][keys[i]][key][1]=="Veg")
         hd1.style.color="green";
       else
         hd1.style.color="red";
       d2.appendChild(hd1);
+      /*
       //<h4 class="item-price">
       var hd2=document.createElement("H4");
       hd2.className="item-price column";
       hd2.innerHTML="&#8377;"+DATA["Courses"][keys[i]][key][0];
       d2.appendChild(hd2);
+      */
       //<div class="count-input">
       var d3=document.createElement("DIV");
       d3.className="count-input column";
