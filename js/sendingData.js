@@ -50,7 +50,7 @@ function populate(){
         return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
       }
       data=JSON.stringify(data);
-      data=data.replace('_', ' ');
+      data=data.replace(/_/g, ' ');
       data=toTitleCase(data);
       data=JSON.parse(data);
       console.log(data);
