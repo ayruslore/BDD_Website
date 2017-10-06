@@ -25,6 +25,7 @@
   <!-- Modernizr -->
   <script src="js/vendor/modernizr.custom.js"></script>
   <script src="js/vendor/jquery-2.1.4.min.js"></script>
+  <script src="js/vars.js"></script>
   <script src="js/BabaDaDhaba.js"></script>
   <script src="js/adminPanel.js"></script>
 </head>
@@ -89,7 +90,7 @@
             <div class="widget widget-tags">
               <a href='#' onclick="openCourse2(event, 'addDish')">Add Dish</a>
               <a href='#' onclick="openCourse2(event, 'removeDish')">Remove Dish</a>
-              <a href='#' onclick="openCourse2(event, 'editDish')">Edit Dish</a>
+              <!---a href='#' onclick="openCourse2(event, 'editDish')">Edit Dish</a--->
               <a href='#' onclick="openCourse2(event, 'addCourse')">Add Course</a>
               <a href='#' onclick="openCourse2(event, 'removeCourse')">Remove Course</a>
             </div><!-- .widget.widget-price -->
@@ -208,13 +209,33 @@
 
         <div class="tabcontent" id="order">
           <h3 class="toolbar-title">Orders</h3>
+          <div class="widget widget-tags">
+            <a href='#' onclick="openCourse2(event, 'oar')">Old Airport Road</a>
+            <a href='#' onclick="openCourse2(event, 'yel')">Yelahanka</a>
+            <a href='#' onclick="openCourse2(event, 'res')">Residency Road</a>
+          </div><!-- .widget.widget-price -->
 
-          <div class="panel-group" id="accordion">
-              <script>
-                addOrder("BDD_FB0001", "Naan: 1");
-                addOrder("BDD_FB0002", "Roti: 3");
-              </script>
+          <div class="tabcontent2" id="oar">
+            <script>
+              setInterval(oar, 15000);
+            </script>
+            <div class="panel-group" id="accordionoar"></div>
           </div>
+
+          <div class="tabcontent2" id="yel">
+            <script>
+              setInterval(yel, 15000);
+            </script>
+            <div class="panel-group" id="accordionyel"></div>
+          </div>
+
+          <div class="tabcontent2" id="res">
+            <script>
+              setInterval(res, 15000);
+            </script>
+            <div class="panel-group" id="accordionres"></div>
+          </div>
+
         </div>
       </section>
 

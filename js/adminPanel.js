@@ -192,7 +192,7 @@ function addDi(){
 }
 
 
-function addOrder(orderId, order){
+function addOrder(orderId, order, loc){
   //<div class="panel">
   var d1=document.createElement("DIV");
   d1.className="panel";
@@ -204,7 +204,7 @@ function addOrder(orderId, order){
   var a1=document.createElement("A");
   a1.className="panel-title collapsed";
   a1.setAttribute("data-toggle", "collapse");
-  a1.setAttribute("data-parent", "#accordion");
+  a1.setAttribute("data-parent", "#accordion"+loc);
   a1.href="#"+orderId;
   a1.setAttribute("aria-expanded", "false");
   d2.innerHTML+="Order Number #"+orderId;
@@ -267,7 +267,7 @@ function addOrder(orderId, order){
   d4.appendChild(a4);
   d3.appendChild(d4);
   d1.appendChild(d3);
-  document.getElementById("accordion").appendChild(d1);
+  document.getElementById("accordion"+loc).appendChild(d1);
 }
 
 function changeStatus(obj, orderId){
@@ -275,7 +275,7 @@ function changeStatus(obj, orderId){
     document.getElementById(orderId+"statusReject").remove();
     $.ajax({
       type: "GET",
-      url: "http://129.144.182.67:4000/cart/"+orderId+"/accept",
+      url: redisDb+"/cart/"+orderId+"/accept",
       success: function(data){
         console.log('Success!');
       },
@@ -288,7 +288,7 @@ function changeStatus(obj, orderId){
     document.getElementById(orderId+"status").classList.add('btn-danger');
     document.getElementById(orderId+"kitchen").remove();
     $.ajax({
-      url: "http://129.144.182.67:4000/cart/"+orderId+"/in_kitchen",
+      url: redisDb+"/cart/"+orderId+"/in_kitchen",
       data: "",
       success: function(data){
         console.log('Success!');
@@ -307,7 +307,7 @@ function changeStatus(obj, orderId){
       console.log(delGuy);
       $.ajax({
         type: "GET",
-        url: "http://129.144.182.67:4000/cart/"+orderId+"/out_for_delivery/"+delGuy,
+        url: redisDb+"/cart/"+orderId+"/out_for_delivery/"+delGuy,
         success: function(data){
           console.log('Success!');
         },
@@ -323,7 +323,7 @@ function changeStatus(obj, orderId){
     document.getElementById(orderId+"success").remove();
     $.ajax({
       type: "GET",
-      url: "http://129.144.182.67:4000/cart/"+orderId+"/delivered",
+      url: redisDb+"/cart/"+orderId+"/delivered",
       success: function(data){
         console.log('Success!');
       },
@@ -337,7 +337,7 @@ function changeStatus(obj, orderId){
     document.getElementById("o"+orderId).remove();
     $.ajax({
       type: "GET",
-      url: "http://129.144.182.67:4000/cart/"+orderId+"/reject",
+      url: redisDb+"/cart/"+orderId+"/reject",
       data: "",
       success: function(data){
         console.log('Success!');
@@ -356,10 +356,70 @@ function changeStatus(obj, orderId){
 {"id": "1601355239935835", "cart": {}}
 ]
 */
+function yel(){
+  $.ajax({
+    url: redisDb+'/read_orders_Y',
+    success: function(data) {
+    //var data=[{"id": "1446107422137541", "cart": {"tawa_roti": "6"}},{"id": "1446107422137541", "cart": {}},{"id": "1601355239935835", "cart": {"chicken_makhanwala": "3", "wheat_tawa_roti": "2"}}];
+      data=JSON.parse(data);
+      console.log(data);
+      for(var i=0; i<data.length; i++){
+        item=(data[i]);
+        console.log(item["id"], JSON.stringify(item["cart"]));
+        if(JSON.stringify(item["cart"])!={})
+          addOrder(String(item["id"]), JSON.stringify(item["data"]["name"])+"<br>"+JSON.stringify(item["data"]["number"])+"<br>"+JSON.stringify(item["data"]["address"])+"<br>"+JSON.stringify(item["cart"]), "yel");
+        }
+      },
+    error: function(data){
+      console.log(data);
+    }
+  });
+}
 
+function oar(){
+  $.ajax({
+    url: redisDb+'/read_orders_O',
+    success: function(data) {
+    //var data=[{"id": "1446107422137541", "cart": {"tawa_roti": "6"}},{"id": "1446107422137541", "cart": {}},{"id": "1601355239935835", "cart": {"chicken_makhanwala": "3", "wheat_tawa_roti": "2"}}];
+      data=JSON.parse(data);
+      console.log(data);
+      for(var i=0; i<data.length; i++){
+        item=(data[i]);
+        console.log(item["id"], JSON.stringify(item["cart"]));
+        if(JSON.stringify(item["cart"])!={})
+          addOrder(String(item["id"]), JSON.stringify(item["data"]["name"])+"<br>"+JSON.stringify(item["data"]["number"])+"<br>"+JSON.stringify(item["data"]["address"])+"<br>"+JSON.stringify(item["cart"]), "oar");
+        }
+      },
+    error: function(data){
+      console.log(data);
+    }
+  });
+}
+
+function res(){
+  $.ajax({
+    url: redisDb+'/read_orders_R',
+    success: function(data) {
+    //var data=[{"id": "1446107422137541", "cart": {"tawa_roti": "6"}},{"id": "1446107422137541", "cart": {}},{"id": "1601355239935835", "cart": {"chicken_makhanwala": "3", "wheat_tawa_roti": "2"}}];
+      data=JSON.parse(data);
+      console.log(data);
+      for(var i=0; i<data.length; i++){
+        item=(data[i]);
+        console.log(item["id"], JSON.stringify(item["cart"]));
+        if(JSON.stringify(item["cart"])!={})
+          addOrder(String(item["id"]), JSON.stringify(item["data"]["name"])+"<br>"+JSON.stringify(item["data"]["number"])+"<br>"+JSON.stringify(item["data"]["address"])+"<br>"+JSON.stringify(item["cart"]), "res");
+        }
+      },
+    error: function(data){
+      console.log(data);
+    }
+  });
+}
+
+/*
 setInterval(function(){
     $.ajax({
-    url: 'http://129.144.182.67:4000/read_orders',
+    url: redisDb+'/read_orders',
     success: function(data) {
       //var data=[{"id": "1446107422137541", "cart": {"tawa_roti": "6"}},{"id": "1446107422137541", "cart": {}},{"id": "1601355239935835", "cart": {"chicken_makhanwala": "3", "wheat_tawa_roti": "2"}}];
       data=JSON.parse(data);
@@ -368,21 +428,22 @@ setInterval(function(){
         item=(data[i]);
         console.log(item["id"], JSON.stringify(item["cart"]));
         if(JSON.stringify(item["cart"])!={})
-          addOrder(String(item["id"]), JSON.stringify(item["cart"]));
+          addOrder(String(item["id"]), JSON.stringify(item["data"]["name"])+"<br>"+JSON.stringify(item["data"]["number"])+"<br>"+JSON.stringify(item["data"]["address"])+"<br>"+JSON.stringify(item["cart"]));
       }
     },
     error: function(data){
       console.log(data);
     }
   });
-}, 5000);
+}, 15000);
+*/
 
 function submitChanges(){
   DATA=JSON.stringify(DATA);
   console.log(DATA);
   $.ajax({
     type: "GET",
-    url: "http://129.144.182.67:4000/set_menu/"+DATA,
+    url: redisDb+"/set_menu/"+DATA,
     data: "",
     success: function(data){
       console.log(data);
