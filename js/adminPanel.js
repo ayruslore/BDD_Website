@@ -192,7 +192,7 @@ function addDi(){
 }
 
 
-function addOrder(orderId, order, loc){
+function addOrder(orderId, order, loc, status){
   //<div class="panel">
   var d1=document.createElement("DIV");
   d1.className="panel";
@@ -212,9 +212,12 @@ function addOrder(orderId, order, loc){
   w1.href="#";
   w1.id=orderId+"status";
   w1.className="btn btn-pill btn-sm btn-primary waves-effect waves-light";
-  w1.innerHTML="Accept";
+  if(status=="pending") w1.innerHTML="Accept";
+  else if(status=="accepted") w1.innerHTML="Accepted";
+  else if(status=="in_kitchen") w1.innerHTML="In Kitchen";
+  else if(status=="out_for_delivery") w1.innerHTML="Out For Delivery";
   w1.onclick=function(){
-    changeStatus('Accepted', orderId);
+    if(status=="pending") changeStatus('Accepted', orderId);
   }
   a1.appendChild(w1);
   var w2=document.createElement("WQ");
@@ -225,7 +228,7 @@ function addOrder(orderId, order, loc){
   w2.onclick=function(){
     changeStatus('Rejected', orderId);
   }
-  a1.appendChild(w2);
+  if(status=="pending") a1.appendChild(w2);
   d2.appendChild(a1);
   d1.appendChild(d2);
   var d3=document.createElement("DIV");
@@ -262,9 +265,9 @@ function addOrder(orderId, order, loc){
     changeStatus('Delivered', orderId);
   }
   a4.innerHTML="Delivered";
-  d4.appendChild(a2);
-  d4.appendChild(a3);
-  d4.appendChild(a4);
+  if(status=="accepted" || status=="pending") d4.appendChild(a2);
+  if(status=="pending" || status=="in_kitchen" || status=="accepted") d4.appendChild(a3);
+  if(status=="pending" || status=="out_for_delivery" || status=="in_kitchen" || status=="accepted") d4.appendChild(a4);
   d3.appendChild(d4);
   d1.appendChild(d3);
   document.getElementById("accordion"+loc).appendChild(d1);
@@ -356,20 +359,25 @@ function changeStatus(obj, orderId){
 {"id": "1601355239935835", "cart": {}}
 ]
 */
+
+function ordr(data, loc){
+  for(var item in data){
+    console.log(data[item]["id"], JSON.stringify(data[item]["cart"]));
+    if(JSON.stringify(data[item]["cart"])!={}){
+      addOrder(String(data[item]["id"]), JSON.stringify(data[item]["data"]["name"])+"<br>"+JSON.stringify(data[item]["data"]["number"])+"<br>"+JSON.stringify(data[item]["data"]["address"])+"<br>"+JSON.stringify(data[item]["cart"]), loc, data[item]["status"]);
+    }
+  }
+}
+
 function yel(){
+  document.getElementById("accordionyel").innerHTML="";
   $.ajax({
     url: redisDb+'/read_orders_Y',
     success: function(data) {
-    //var data=[{"id": "1446107422137541", "cart": {"tawa_roti": "6"}},{"id": "1446107422137541", "cart": {}},{"id": "1601355239935835", "cart": {"chicken_makhanwala": "3", "wheat_tawa_roti": "2"}}];
       data=JSON.parse(data);
       console.log(data);
-      for(var i=0; i<data.length; i++){
-        item=(data[i]);
-        console.log(item["id"], JSON.stringify(item["cart"]));
-        if(JSON.stringify(item["cart"])!={})
-          addOrder(String(item["id"]), JSON.stringify(item["data"]["name"])+"<br>"+JSON.stringify(item["data"]["number"])+"<br>"+JSON.stringify(item["data"]["address"])+"<br>"+JSON.stringify(item["cart"]), "yel");
-        }
-      },
+      ordr(data, "yel");
+    },
     error: function(data){
       console.log(data);
     }
@@ -377,19 +385,14 @@ function yel(){
 }
 
 function oar(){
+  document.getElementById("accordionoar").innerHTML="";
   $.ajax({
     url: redisDb+'/read_orders_O',
     success: function(data) {
-    //var data=[{"id": "1446107422137541", "cart": {"tawa_roti": "6"}},{"id": "1446107422137541", "cart": {}},{"id": "1601355239935835", "cart": {"chicken_makhanwala": "3", "wheat_tawa_roti": "2"}}];
       data=JSON.parse(data);
       console.log(data);
-      for(var i=0; i<data.length; i++){
-        item=(data[i]);
-        console.log(item["id"], JSON.stringify(item["cart"]));
-        if(JSON.stringify(item["cart"])!={})
-          addOrder(String(item["id"]), JSON.stringify(item["data"]["name"])+"<br>"+JSON.stringify(item["data"]["number"])+"<br>"+JSON.stringify(item["data"]["address"])+"<br>"+JSON.stringify(item["cart"]), "oar");
-        }
-      },
+      ordr(data, "oar");
+    },
     error: function(data){
       console.log(data);
     }
@@ -397,19 +400,14 @@ function oar(){
 }
 
 function res(){
+  document.getElementById("accordionres").innerHTML="";
   $.ajax({
     url: redisDb+'/read_orders_R',
     success: function(data) {
-    //var data=[{"id": "1446107422137541", "cart": {"tawa_roti": "6"}},{"id": "1446107422137541", "cart": {}},{"id": "1601355239935835", "cart": {"chicken_makhanwala": "3", "wheat_tawa_roti": "2"}}];
       data=JSON.parse(data);
       console.log(data);
-      for(var i=0; i<data.length; i++){
-        item=(data[i]);
-        console.log(item["id"], JSON.stringify(item["cart"]));
-        if(JSON.stringify(item["cart"])!={})
-          addOrder(String(item["id"]), JSON.stringify(item["data"]["name"])+"<br>"+JSON.stringify(item["data"]["number"])+"<br>"+JSON.stringify(item["data"]["address"])+"<br>"+JSON.stringify(item["cart"]), "res");
-        }
-      },
+      ordr(data, "res");
+    },
     error: function(data){
       console.log(data);
     }
@@ -426,9 +424,9 @@ setInterval(function(){
       console.log(data);
       for(var i=0; i<data.length; i++){
         item=(data[i]);
-        console.log(item["id"], JSON.stringify(item["cart"]));
-        if(JSON.stringify(item["cart"])!={})
-          addOrder(String(item["id"]), JSON.stringify(item["data"]["name"])+"<br>"+JSON.stringify(item["data"]["number"])+"<br>"+JSON.stringify(item["data"]["address"])+"<br>"+JSON.stringify(item["cart"]));
+        console.log(data[item]["id"], JSON.stringify(data[item]["cart"]));
+        if(JSON.stringify(data[item]["cart"])!={})
+          addOrder(String(data[item]["id"]), JSON.stringify(data[item]["data"]["name"])+"<br>"+JSON.stringify(data[item]["data"]["number"])+"<br>"+JSON.stringify(data[item]["data"]["address"])+"<br>"+JSON.stringify(data[item]["cart"]));
       }
     },
     error: function(data){

@@ -5,6 +5,7 @@ function done(){
   nameUser=document.getElementsByName('name')[0].value;
   phoneUser=Number(document.getElementsByName('phone')[0].value);
   addUser=document.getElementsByName('address')[0].value;
+  addUser=addUser.replace(\/\g, '-');
   if(nameUser=="" | addUser=="" | phoneUser=="")
     alert("Fill in the details to proceed.");
   else if(getlength(phoneUser)!=10){
