@@ -50,6 +50,18 @@ function remo(){
   for(var i=0; i<keys.length; i++)
     if (document.getElementById('c'+i).checked)
       rate_value = document.getElementById('c'+i).value;
+  for(var i in DATA["Courses"][rate_value]){
+    $.ajax({
+      type: "GET",
+      url: redisDb+"/remove_dish/"+i.replace(/ /g, '_'),
+      success: function(data){
+        console.log(data);
+      },
+      error: function(data){
+        console.log('Nope!');
+      }
+    });
+  }
   delete DATA["Courses"][rate_value];
   var index = keys.indexOf(rate_value);
   keys.splice(index, 1);
@@ -114,10 +126,6 @@ function removeDi(){
   document.getElementById('dishes').appendChild(ab);
 }
 
-function editDi(){
-
-}
-
 function remoD(keys2, course){
   var rate_value;
   for(var i=0; i<keys2.length; i++)
@@ -129,6 +137,16 @@ function remoD(keys2, course){
   //document.getElementById("courseDishes").innerHTML="";
   document.getElementById("removeDish123").click();
   //alert(rate_value+" Removed!\nUpdate Menu now!");
+  $.ajax({
+    type: "GET",
+    url: redisDb+"/remove_dish/"+rate_value.replace(/ /g, '_'),
+    success: function(data){
+      console.log(data);
+    },
+    error: function(data){
+      console.log('Nope!');
+    }
+  });
 }
 
 function addD(id_){
@@ -167,6 +185,9 @@ function addD(id_){
 }
 
 function addDi(){
+  function imageName(nameD){
+    return nameD.replace(/ /g, '-');
+  }
   var course, vg;
   for(var i=0; i<keys.length; i++){
     if (document.getElementById(keys[i]).checked){
@@ -180,8 +201,20 @@ function addDi(){
   var dish_name=document.getElementById('dish_name').value;
   var dish_price=document.getElementById('dish_price').value;
 
+  var dishDet={"name":toTitleCase(dish_name), "price":dish_price, "link":"http://ec2-13-58-254-247.us-east-2.compute.amazonaws.com/img/db/"+imageName(toTitleCase(dish_name))+".jpg", "category": dish_ing, "count":0};
+  $.ajax({
+    type: "GET",
+    url: redisDb+"/add_dish/"+dishDet,
+    success: function(data){
+      console.log(data);
+    },
+    error: function(data){
+      console.log('Nope!');
+    }
+  });
+
   if(dish_name.length!=0 & dish_price.length!=0 & course!=null & vg!=null){
-    DATA["Courses"][course][toTitleCase(dish_name)]=[dish_price, vg, dish_ing];
+    DATA["Courses"][course][toTitleCase(dish_name)]=[dish_price, vg];
     console.log(document.getElementById("imageFile").files[0].name);
     alert("Dish added!");
     openCourse(event, 'menuView');

@@ -300,8 +300,9 @@ function getData2(){
 }
 
 function checkout(){
-  //window.alert("Close this webview/tab to proceed.");
-  location.href="payment.html?userId="+uid;
+  document.getElementsByTagName("BODY")[0].style.display="none";
+  window.alert("Close this webview/tab to proceed.");
+  //location.href="payment.html?userId="+uid;
   //sessionStorage.setItem('total', document.getElementById("amt").innerHTML);
 }
 
