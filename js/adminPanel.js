@@ -484,4 +484,15 @@ function submitChanges(){
       console.log('Nope!');
     }
   });
+  $.ajax({
+    type: "GET",
+    url: pythonSript+"/write/"+DATA,
+    success: function(data){
+      console.log('Success!');
+    },
+    error: function(data){
+      console.log('Nope!');
+    }
+  });
+
 }

@@ -302,6 +302,20 @@ function getData2(){
 function checkout(){
   document.getElementsByTagName("BODY")[0].style.display="none";
   window.alert("Close this webview/tab to proceed.");
+  $.ajax({
+    type: "GET",
+    url: nodejsScript+"/showcart",
+    data: {
+      'show': uid
+    },
+    success: function(data){
+      console.log('Success!');
+    },
+    error: function(data){
+      console.log('Nope!');
+    }
+  });
+
   //location.href="payment.html?userId="+uid;
   //sessionStorage.setItem('total', document.getElementById("amt").innerHTML);
 }
