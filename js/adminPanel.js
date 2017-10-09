@@ -195,6 +195,7 @@ function addDi(){
       break;
     }
   }
+  name=name.replace("Non Veg", "NonVeg");
   if (document.getElementById('Veg').checked)
     vg=document.getElementById('Veg').value;
   else vg=document.getElementById('Non Veg').value;
@@ -482,6 +483,7 @@ setInterval(function(){
 function submitChanges(){
   DATA=JSON.stringify(DATA);
   console.log(DATA);
+  /*
   $.ajax({
     type: "GET",
     url: redisDb+"/set_menu/"+DATA,
@@ -494,6 +496,7 @@ function submitChanges(){
       console.log('Nope!');
     }
   });
+  */
   $.ajax({
     type: "GET",
     url: pythonSript+"/write/"+DATA,
