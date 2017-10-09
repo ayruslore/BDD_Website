@@ -306,7 +306,7 @@ function checkout(){
     type: "GET",
     url: nodejsScript+"/showcart",
     data: {
-      'show': uid
+      'Id': uid
     },
     success: function(data){
       console.log('Success!');
@@ -339,20 +339,3 @@ function syncValues(v1, val){
     document.getElementsByName(v1)[2].value=val;
   getData2();
 }
-
-window.onbeforeunload=function(e){
-  console.log(uid);
-  $.ajax({
-    type: "GET",
-    url: nodejsScript+"/confirm",
-    data: {
-      'show': uid
-    },
-    success: function(data){
-      console.log('Success!');
-    },
-    error: function(data){
-      console.log('Nope!');
-    }
-  });
-};

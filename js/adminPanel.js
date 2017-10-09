@@ -319,6 +319,16 @@ function changeStatus(obj, orderId){
         console.log('Nope!');
       }
     });
+    $.ajax({
+      type: "GET",
+      url: nodejsScript+"/statusupdate/"+orderId+"/accept",
+      success: function(data){
+        console.log('Success!');
+      },
+      error: function(data){
+        console.log('Nope!');
+      }
+    });
   }
   else if(obj=="In Kitchen"){
     document.getElementById(orderId+"status").classList.add('btn-danger');
