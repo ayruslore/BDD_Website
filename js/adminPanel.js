@@ -130,16 +130,18 @@ function remoD(keys2, course){
   var rate_value;
   for(var i=0; i<keys2.length; i++)
     if (document.getElementById(keys2[i]).checked)
-      console.log(document.getElementById(keys2[i]).value);
+      //console.log(document.getElementById(keys2[i]).value);
       rate_value = document.getElementById(keys2[i]).value;
   delete DATA["Courses"][course][rate_value];
   console.log(DATA["Courses"][course]);
   //document.getElementById("courseDishes").innerHTML="";
   document.getElementById("removeDish123").click();
   //alert(rate_value+" Removed!\nUpdate Menu now!");
+  var xyz=[rate_value];
+  xyz=JSON.stringify(xyz);
   $.ajax({
     type: "GET",
-    url: redisDb+"/remove_dish/"+rate_value.replace(/ /g, '_'),
+    url: redisDb+"/remove_dish/"+xyz.replace(/ /g, '_'),
     success: function(data){
       console.log(data);
     },
@@ -190,7 +192,7 @@ function addDi(){
   }
   var course, vg;
   for(var i=0; i<keys.length; i++){
-    if (document.getElementById(keys[i]).checked){
+    if(document.getElementById(keys[i]).checked){
       course=document.getElementById(keys[i]).value;
       break;
     }
@@ -201,8 +203,22 @@ function addDi(){
   else vg=document.getElementById('Non Veg').value;
   var dish_name=document.getElementById('dish_name').value;
   var dish_price=document.getElementById('dish_price').value;
-
-  var dishDet={"name":toTitleCase(dish_name), "price":dish_price, "link":"http://ec2-13-58-254-247.us-east-2.compute.amazonaws.com/img/db/"+imageName(toTitleCase(dish_name))+".jpg", "category": dish_ing, "count":0};
+  var dish_ing, dish_c;
+  for(var i=1; i<=6; i++){
+    if(document.getElementById("ing"+i).checked){
+      dish_ing=document.getElementById("ing"+i).value;
+      break
+    }
+  }
+  for(var i=0; i<keys.length; i++){
+    if(document.getElementById(keys[i]).checked){
+      dish_c=document.getElementById(keys[i]).value;
+      break
+    }
+  }
+  var dishDet=[{"v_n": vg, "name":toTitleCase(dish_name), "price":dish_price, "link":"http:__ec2-13-58-254-247.us-east-2.compute.amazonaws.com_img_db_"+imageName(toTitleCase(dish_name))+".jpg", "category": dish_ing, "course":dish_c, "count":0}];
+  dishDet=JSON.stringify(dishDet);
+  console.log(dishDet);
   $.ajax({
     type: "GET",
     url: redisDb+"/add_dish/"+dishDet,
@@ -216,7 +232,7 @@ function addDi(){
 
   if(dish_name.length!=0 & dish_price.length!=0 & course!=null & vg!=null){
     DATA["Courses"][course][toTitleCase(dish_name)]=[dish_price, vg];
-    console.log(document.getElementById("imageFile").files[0].name);
+    //console.log(document.getElementById("imageFile").files[0].name);
     alert("Dish added!");
     openCourse(event, 'menuView');
     viewMenu();
@@ -246,12 +262,29 @@ function addOrder(orderId, order, loc, status){
   w1.href="#";
   w1.id=orderId+"status";
   w1.className="btn btn-pill btn-sm btn-primary waves-effect waves-light";
-  if(status=="pending") w1.innerHTML="Accept";
-  else if(status=="accepted") w1.innerHTML="Accepted";
-  else if(status=="in_kitchen") w1.innerHTML="In Kitchen";
-  else if(status=="out_for_delivery") w1.innerHTML="Out For Delivery";
-  w1.onclick=function(){
-    if(status=="pending") changeStatus('Accepted', orderId);
+  if(status=="pending"){
+    w1.innerHTML="Accept";
+    w1.onclick=function(){
+      changeStatus('Accepted', orderId);
+    }
+  }
+  else if(status=="order_accepted"){
+    w1.innerHTML="Accepted";
+    w1.onclick=function(){
+      changeStatus('In Kitchen', orderId);
+    }
+  }
+  else if(status=="in_kitchen"){
+    w1.innerHTML="In Kitchen";
+    w1.onclick=function(){
+      changeStatus('Out For Delivery', orderId);
+    }
+  }
+  else if(status=="out_for_delivery"){
+    w1.innerHTML="Out For Delivery";
+    w1.onclick=function(){
+      changeStatus('Delivered', orderId);
+    }
   }
   a1.appendChild(w1);
   var w2=document.createElement("WQ");
@@ -274,7 +307,7 @@ function addOrder(orderId, order, loc, status){
   var d4=document.createElement("DIV");
   d4.innerHTML=order+"<br>";
   d4.className="panel-body text-gray";
-  d4.innerHTML+="Update Status! ";
+  /*
   var a2=document.createElement("A");
   a2.href="#";
   a2.id=orderId+"kitchen";
@@ -299,9 +332,10 @@ function addOrder(orderId, order, loc, status){
     changeStatus('Delivered', orderId);
   }
   a4.innerHTML="Delivered";
-  if(status=="accepted" || status=="pending") d4.appendChild(a2);
-  if(status=="pending" || status=="in_kitchen" || status=="accepted") d4.appendChild(a3);
-  if(status=="pending" || status=="out_for_delivery" || status=="in_kitchen" || status=="accepted") d4.appendChild(a4);
+  //if(status=="accepted" || status=="pending") d4.appendChild(a2);
+  //if(status=="pending" || status=="in_kitchen" || status=="accepted") d4.appendChild(a3);
+  //if(status=="pending" || status=="out_for_delivery" || status=="in_kitchen" || status=="accepted") d4.appendChild(a4);
+  */
   d3.appendChild(d4);
   d1.appendChild(d3);
   document.getElementById("accordion"+loc).appendChild(d1);
@@ -309,7 +343,6 @@ function addOrder(orderId, order, loc, status){
 
 function changeStatus(obj, orderId){
   if(obj=="Accepted"){
-    document.getElementById(orderId+"statusReject").remove();
     $.ajax({
       type: "GET",
       url: redisDb+"/cart/"+orderId+"/accept",
@@ -326,7 +359,7 @@ function changeStatus(obj, orderId){
       data:{
         'Id': orderId,
         'Status': "accepted"
-      }
+      },
       success: function(data){
         console.log('Success!');
       },
@@ -337,11 +370,8 @@ function changeStatus(obj, orderId){
 
   }
   else if(obj=="In Kitchen"){
-    document.getElementById(orderId+"status").classList.add('btn-danger');
-    document.getElementById(orderId+"kitchen").remove();
     $.ajax({
       url: redisDb+"/cart/"+orderId+"/in_kitchen",
-      data: "",
       success: function(data){
         console.log('Success!');
       },
@@ -355,7 +385,7 @@ function changeStatus(obj, orderId){
       data:{
         'Id': orderId,
         'Status': "in_kitchen"
-      }
+      },
       success: function(data){
         console.log('Success!');
       },
@@ -368,9 +398,6 @@ function changeStatus(obj, orderId){
   else if(obj=="Out For Delivery"){
     var delGuy=prompt("Please enter delivery boy's phone number", "");
     if (delGuy!=null){
-      document.getElementById(orderId+"status").classList.remove('btn-danger');
-      document.getElementById(orderId+"status").classList.add('btn-warning');
-      document.getElementById(orderId+"delivery").innerHTML="Update No.";
       console.log(delGuy);
       $.ajax({
         type: "GET",
@@ -389,7 +416,7 @@ function changeStatus(obj, orderId){
           'Id': orderId,
           'Status': "out_for_delivery",
           'Dboy': delGuy
-        }
+        },
         success: function(data){
           console.log('Success!');
         },
@@ -401,9 +428,6 @@ function changeStatus(obj, orderId){
     }
   }
   else if(obj=="Delivered"){
-    document.getElementById(orderId+"status").classList.remove('btn-warning');
-    document.getElementById(orderId+"status").classList.add('btn-success');
-    document.getElementById(orderId+"success").remove();
     $.ajax({
       type: "GET",
       url: redisDb+"/cart/"+orderId+"/delivered",
@@ -420,7 +444,7 @@ function changeStatus(obj, orderId){
       data:{
         'Id': orderId,
         'Status': "delivered"
-      }
+      },
       success: function(data){
         console.log('Success!');
       },
@@ -450,7 +474,7 @@ function changeStatus(obj, orderId){
       data:{
         'Id': orderId,
         'Status': "rejected"
-      }
+      },
       success: function(data){
         console.log('Success!');
       },
@@ -461,12 +485,25 @@ function changeStatus(obj, orderId){
 
   }
 }
+
 /*
 [
-{"id": "1446107422137541", "cart": {"tawa_roti": "6"}},
-{"id": "1446107422137541", "cart": {}},
-{"id": "1601355239935835", "cart": {"chicken_makhanwala": "3", "wheat_tawa_roti": "2"}},
-{"id": "1601355239935835", "cart": {}}
+{
+  "id": "1446107422137541",
+  "cart": {"tawa_roti": "6"}
+},
+{
+  "id": "1446107422137541",
+  "cart": {}
+},
+{
+  "id": "1601355239935835",
+  "cart": {"chicken_makhanwala": "3", "wheat_tawa_roti": "2"}
+},
+{
+  "id": "1601355239935835",
+  "cart": {}
+}
 ]
 */
 
@@ -474,7 +511,7 @@ function ordr(data, loc){
   for(var item in data){
     console.log(data[item]["id"], JSON.stringify(data[item]["cart"]));
     if(JSON.stringify(data[item]["cart"])!={}){
-      addOrder(String(data[item]["id"]), JSON.stringify(data[item]["data"]["name"])+"<br>"+JSON.stringify(data[item]["data"]["number"])+"<br>"+JSON.stringify(data[item]["data"]["address"])+"<br>"+JSON.stringify(data[item]["cart"]), loc, data[item]["status"]);
+      addOrder(String(data[item]["id"]), "<li>"+JSON.stringify(data[item]["data"]["name"])+"</li><li>"+JSON.stringify(data[item]["data"]["number"])+"</li><li>"+JSON.stringify(data[item]["data"]["address"])+"</li><li>"+JSON.stringify(data[item]["cart"])+"</li>", loc, data[item]["status"]);
     }
   }
 }
@@ -565,7 +602,7 @@ function submitChanges(){
   */
   $.ajax({
     type: "GET",
-    url: pythonSript+"/write/"+DATA,
+    url: pythonSript+"/write/"+JSON.stringify(DATA),
     success: function(data){
       console.log('Success!');
     },
