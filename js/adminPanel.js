@@ -519,7 +519,7 @@ function ordr(data, loc){
       var x="";
       for(var i in temp)
         x+=toTitleCase(String(i.replace(/_/g, ' ')))+": "+String(temp[i])+"<br>";
-      addOrder(String(data[item]["id"]), "<li>"+JSON.stringify(data[item]["data"]["name"])+"</li><li>"+JSON.stringify(data[item]["data"]["number"])+"</li><li>"+JSON.stringify(data[item]["data"]["address"])+"</li><li>"+x+"</li>", loc, data[item]["status"]);
+      addOrder((data[item]["id"]), "<li>Name: "+(data[item]["data"]["name"])+"</li><li>Phone Number: "+(data[item]["data"]["number"])+"</li><li>Address: "+(data[item]["data"]["address"])+"</li><li>"+x+"</li>", loc, data[item]["status"]);
     }
   }
 }
