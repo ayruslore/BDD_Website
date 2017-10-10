@@ -243,6 +243,7 @@ function addDi(){
 
 
 function addOrder(orderId, order, loc, status){
+  if(status=="rejected") return;
   //<div class="panel">
   var d1=document.createElement("DIV");
   d1.className="panel";
@@ -508,10 +509,17 @@ function changeStatus(obj, orderId){
 */
 
 function ordr(data, loc){
+  function toTitleCase(str){
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+  }
   for(var item in data){
     console.log(data[item]["id"], JSON.stringify(data[item]["cart"]));
     if(JSON.stringify(data[item]["cart"])!={}){
-      addOrder(String(data[item]["id"]), "<li>"+JSON.stringify(data[item]["data"]["name"])+"</li><li>"+JSON.stringify(data[item]["data"]["number"])+"</li><li>"+JSON.stringify(data[item]["data"]["address"])+"</li><li>"+JSON.stringify(data[item]["cart"])+"</li>", loc, data[item]["status"]);
+      var temp=data[item]["cart"];
+      var x="";
+      for(var i in temp)
+        x+=toTitleCase(String(i.replace(/_/g, ' ')))+": "+String(temp[i])+"<br>";
+      addOrder(String(data[item]["id"]), "<li>"+JSON.stringify(data[item]["data"]["name"])+"</li><li>"+JSON.stringify(data[item]["data"]["number"])+"</li><li>"+JSON.stringify(data[item]["data"]["address"])+"</li><li>"+x+"</li>", loc, data[item]["status"]);
     }
   }
 }
