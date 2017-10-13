@@ -354,21 +354,6 @@ function changeStatus(obj, orderId){
         console.log('Nope!');
       }
     });
-    $.ajax({
-      type: "GET",
-      url: nodejsScript+"/statusupdate",
-      data:{
-        'Id': orderId,
-        'Status': "accepted"
-      },
-      success: function(data){
-        console.log('Success!');
-      },
-      error: function(data){
-        console.log('Nope!');
-      }
-    });
-
   }
   else if(obj=="In Kitchen"){
     $.ajax({
@@ -380,21 +365,6 @@ function changeStatus(obj, orderId){
         console.log('Nope!');
       }
     });
-    $.ajax({
-      type: "GET",
-      url: nodejsScript+"/statusupdate",
-      data:{
-        'Id': orderId,
-        'Status': "in_kitchen"
-      },
-      success: function(data){
-        console.log('Success!');
-      },
-      error: function(data){
-        console.log('Nope!');
-      }
-    });
-
   }
   else if(obj=="Out For Delivery"){
     var delGuy=prompt("Please enter delivery boy's phone number", "");
@@ -410,22 +380,6 @@ function changeStatus(obj, orderId){
           console.log('Nope!');
         }
       });
-      $.ajax({
-        type: "GET",
-        url: nodejsScript+"/statusupdate",
-        data:{
-          'Id': orderId,
-          'Status': "out_for_delivery",
-          'Dboy': delGuy
-        },
-        success: function(data){
-          console.log('Success!');
-        },
-        error: function(data){
-          console.log('Nope!');
-        }
-      });
-
     }
   }
   else if(obj=="Delivered"){
@@ -439,21 +393,6 @@ function changeStatus(obj, orderId){
         console.log('Nope!');
       }
     });
-    $.ajax({
-      type: "GET",
-      url: nodejsScript+"/statusupdate",
-      data:{
-        'Id': orderId,
-        'Status': "delivered"
-      },
-      success: function(data){
-        console.log('Success!');
-      },
-      error: function(data){
-        console.log('Nope!');
-      }
-    });
-
   }
   document.getElementById(orderId+"status").innerHTML=obj;
   if(obj=="Rejected"){
@@ -469,21 +408,6 @@ function changeStatus(obj, orderId){
         console.log('Nope!');
       }
     });
-    $.ajax({
-      type: "GET",
-      url: nodejsScript+"/statusupdate",
-      data:{
-        'Id': orderId,
-        'Status': "rejected"
-      },
-      success: function(data){
-        console.log('Success!');
-      },
-      error: function(data){
-        console.log('Nope!');
-      }
-    });
-
   }
 }
 
