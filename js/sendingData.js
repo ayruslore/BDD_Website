@@ -28,9 +28,13 @@ function getURL(){
 }
 
 function finalSend(){
+  var i=JSON.stringify(cartJSON);
+  i=i.replace(/(())/g, "");
+  i=i.replace(/Non Veg/g, "Nonveg");
+  i=i.replace(/Veg/g, "Veg");
   $.ajax({
     type: "GET",
-    url: redisDb+"/cart/"+uid+"/replace/"+cartJSON,
+    url: redisDb+"/cart/"+uid+"/replace/"+i,
     data: "",
     success: function(data){
       console.log('Success!');

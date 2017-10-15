@@ -19,12 +19,6 @@
 }
 
 .removeButton:hover{color:#ef0568}
-
-#map {
-  height: 50%;
-  line-height: 50%;
-  width: 50%;
-}
 #panel {
   position: center;
  top: 100px;
