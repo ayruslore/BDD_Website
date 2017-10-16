@@ -36,19 +36,19 @@ var DATA={"Courses":{"New Launch":{"Punjabi Aloo Paratha Combo":
 ["40", "Veg"],"Soft Drink 250ml":
 ["30", "Veg"], "Soft Drink 500ml":
 ["44", "Veg"], "Diet Coke":
-["45", "Veg"]},"Top Gear Combos":{"Dilli Combo (Veg)":
-["280","Veg"],"Amritsari Combo (Veg)":
-["280","Veg"],"Lucknowi Combo (Veg)":
-["280","Veg"],"Dilli Combo (Non Veg)":
-["280","Non Veg"],"Amritsari Combo (Non Veg)":
-["280","Non Veg"],"Kashmiri Combo (Non Veg)":
-["370","Non Veg"]},"Speedy Combos":{"Dilli Mini Combo (Veg)":
-["160","Veg"],"Lucknowi Mini Combo (Veg)":
-["160","Veg"],"Amritsari Mini Combo (Veg)":
+["45", "Veg"]},"Top Gear Combos":{"Dilli Combo Veg":
+["280","Veg"],"Amritsari Combo Veg":
+["280","Veg"],"Lucknowi Combo Veg":
+["280","Veg"],"Dilli Combo Nonveg":
+["280","Non Veg"],"Amritsari Combo Nonveg":
+["280","Non Veg"],"Kashmiri Combo Nonveg":
+["370","Non Veg"]},"Speedy Combos":{"Dilli Mini Combo Veg":
+["160","Veg"],"Lucknowi Mini Combo Veg":
+["160","Veg"],"Amritsari Mini Combo Veg":
 ["160","Veg"],"Dal Makhani Mini Combo":
-["99","Veg"],"Dilli Mini Combo (Non Veg)":
-["160","Non Veg"],"Amritsari Mini Combo (Non Veg)":
-["160","Non Veg"],"Kashmiri Mini Combo (Non Veg)":
+["99","Veg"],"Dilli Mini Combo Nonveg":
+["160","Non Veg"],"Amritsari Mini Combo Nonveg":
+["160","Non Veg"],"Kashmiri Mini Combo Nonveg":
 ["220","Non Veg"],"Pindi Chole Combo":
 ["120","Veg"]},"Full Throttle Starters":{"Chicken Tikka":
 ["220", "Non Veg"],"Assorted Veg Tikki's":
