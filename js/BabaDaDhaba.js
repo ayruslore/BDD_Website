@@ -26,8 +26,7 @@ var DATA={"Courses":{"New Launch":{"Punjabi Aloo Paratha Combo":
 ["35","Veg"],"Wheat Tawa Roti":
 ["15","Veg"]},"Riveting Desserts":{"Phirni":
 ["90","Veg"],"Kheer":
-["90","Veg"],"B&W Chocolate Cake (Eggless)":
-["150","Veg"]},"Super Coolants":{"Shikanji":
+["90","Veg"],"Super Coolants":{"Shikanji":
 ["30", "Veg"],"Chaas":
 ["40", "Veg"],"Lassi Sweet":
 ["75","Veg"],"Lassi Salted":
@@ -51,8 +50,7 @@ var DATA={"Courses":{"New Launch":{"Punjabi Aloo Paratha Combo":
 ["160","Non Veg"],"Kashmiri Mini Combo Nonveg":
 ["220","Non Veg"],"Pindi Chole Combo":
 ["120","Veg"]},"Full Throttle Starters":{"Chicken Tikka":
-["220", "Non Veg"],"Assorted Veg Tikki's":
-["200","Veg"],"Paneer Tikka":
+["220", "Non Veg"],"Paneer Tikka":
 ["220","Veg"],"Hariyali Chicken Kebab":
 ["220","Non Veg"],"Malai Chicken Kebab":
 ["220","Non Veg"],"Mutton Seekh Kebab":
