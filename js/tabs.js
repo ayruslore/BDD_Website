@@ -45,13 +45,12 @@ function menuToggle123(){
       openCourse(event, 'cart');
     }
     temp.appendChild(cartLogo);
-    menuButton=0;
     var q=document.createElement("SPAN");
     q.id="item_qty";
     q.className="count";
-    q.innerHTML="";
+    q.innerHTML="0";
     temp.appendChild(q);
     menuButton=0;
   }
-  //getData2();
+  getData2();
 }

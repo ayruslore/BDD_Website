@@ -216,6 +216,7 @@ function getData2(){
       }
     }
   }
+
   for(var i=0; i<dish.length; i++){
     //<div class="item">
     var d1=document.createElement("DIV");

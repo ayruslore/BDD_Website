@@ -6,7 +6,6 @@ function sender(dish, qty){
   for(var i=0; i<dish.length; i++)
     cartJSON[dish[i].replace(/ /g, '_').toLowerCase()]=qty[i];
   cartJSON=JSON.stringify(cartJSON);
-  console.log(cartJSON);
 }
 
 function getURL(){
@@ -28,6 +27,7 @@ function getURL(){
 }
 
 function finalSend(){
+  console.log(cartJSON);
   $.ajax({
     type: "GET",
     url: redisDb+"/cart/"+uid+"/replace/"+cartJSON,
@@ -39,6 +39,7 @@ function finalSend(){
       console.log('Nope!');
     }
   });
+  console.log("After");
 }
 
 function populate(){
