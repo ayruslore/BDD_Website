@@ -50,7 +50,8 @@ function menuToggle123(){
     q.id="item_qty";
     q.className="count";
     q.innerHTML="0";
-
+    temp.appendChild(q);
+    menuButton=0;
   }
   getData2();
 }
