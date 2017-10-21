@@ -195,6 +195,7 @@ function searchDish(){
   openCourse(event, "search");
 }
 
+var x=[], y=[];
 function getData2(){
   document.getElementById("display").innerHTML="";
   function imageName(nameD){
@@ -295,8 +296,7 @@ function getData2(){
   document.getElementById("amt").innerHTML="&#8377;"+total;
   document.getElementById("item_qty").innerHTML=items;
   document.getElementById("item_qty2").innerHTML="Currently "+items+" items are in your basket.";
-  sender(dish, qty);
-  finalSend();
+  x=dish, y=qty;
 }
 
 function checkout(){
@@ -338,4 +338,6 @@ function syncValues(v1, val){
   if(document.getElementsByName(v1)[2]!=null)
     document.getElementsByName(v1)[2].value=val;
   getData2();
+  sender(x, y);
+  finalSend();
 }

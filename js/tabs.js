@@ -49,9 +49,9 @@ function menuToggle123(){
     var q=document.createElement("SPAN");
     q.id="item_qty";
     q.className="count";
-    q.innerHTML="0";
+    q.innerHTML="";
     temp.appendChild(q);
     menuButton=0;
   }
-  getData2();
+  //getData2();
 }
