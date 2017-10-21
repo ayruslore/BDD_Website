@@ -213,10 +213,10 @@ function addDi(){
   for(var i=0; i<keys.length; i++){
     if(document.getElementById(keys[i]).checked){
       dish_c=document.getElementById(keys[i]).value;
-      break
+      break;
     }
   }
-  var dishDet=[{"v_n": vg, "name":toTitleCase(dish_name), "price":dish_price, "link":"http:__ec2-13-58-254-247.us-east-2.compute.amazonaws.com_img_db_"+imageName(toTitleCase(dish_name))+".jpg", "category": dish_ing, "course":dish_c, "count":0}];
+  var dishDet=[{"v_n": vg, "name":toTitleCase(dish_name), "price":dish_price, "link":"http:__ec2-35-154-42-243.ap-south-1.compute.amazonaws.com_img_db_"+imageName(toTitleCase(dish_name))+".jpg", "category": dish_ing, "course":dish_c, "count":0}];
   dishDet=JSON.stringify(dishDet);
   console.log(dishDet);
   $.ajax({
