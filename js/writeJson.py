@@ -10,9 +10,10 @@ def enable_cors():
 
 @app.route('/write/<jsonMenu>')
 def updateMenu(jsonMenu):
-    file=open("BabaDaDhaba.js", "w")
+    file=open("BabaDaDhaba.js", "w+")
     file.write("var DATA=")
     jsonMenu=jsonMenu.replace('[', '#\n[')
+    jsonMenu=jsonMenu.replace('_', '\"')
     dat=jsonMenu.split('#')
     stri=""
     for i in range(len(dat)):
@@ -21,4 +22,4 @@ def updateMenu(jsonMenu):
     file.close()
     return stri
 
-run(app, host='localhost', port=4040, debug=True)
+run(app, host='0.0.0.0', port=4040, debug=True)

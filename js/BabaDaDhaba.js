@@ -26,7 +26,7 @@ var DATA={"Courses":{"New Launch":{"Punjabi Aloo Paratha Combo":
 ["35","Veg"],"Wheat Tawa Roti":
 ["15","Veg"]},"Riveting Desserts":{"Phirni":
 ["90","Veg"],"Kheer":
-["90","Veg"],"Super Coolants":{"Shikanji":
+["90","Veg"]},"Super Coolants":{"Shikanji":
 ["30", "Veg"],"Chaas":
 ["40", "Veg"],"Lassi Sweet":
 ["75","Veg"],"Lassi Salted":

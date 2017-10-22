@@ -517,6 +517,7 @@ setInterval(function(){
 
 function submitChanges(){
   DATA=JSON.stringify(DATA);
+  DATA=DATA.replace(/["]/g, "_")
   console.log(DATA);
   /*
   $.ajax({
