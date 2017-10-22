@@ -141,7 +141,7 @@ function remoD(keys2, course){
   xyz=JSON.stringify(xyz);
   $.ajax({
     type: "GET",
-    url: redisDb+"/remove_dish/"+xyz.replace(/ /g, '_'),
+    url: redisDb+"/delete_dish/["+xyz.replace(/ /g, '_')+"]",
     success: function(data){
       console.log(data);
     },
@@ -188,7 +188,7 @@ function addD(id_){
 
 function addDi(){
   function imageName(nameD){
-    return nameD.replace(/ /g, '-');
+    return nameD.replace(/ /g, '_');
   }
   var course, vg;
   for(var i=0; i<keys.length; i++){
@@ -207,7 +207,7 @@ function addDi(){
   for(var i=1; i<=6; i++){
     if(document.getElementById("ing"+i).checked){
       dish_ing=document.getElementById("ing"+i).value;
-      break
+      break;
     }
   }
   for(var i=0; i<keys.length; i++){
@@ -216,12 +216,23 @@ function addDi(){
       break;
     }
   }
-  var dishDet=[{"v_n": vg, "name":toTitleCase(dish_name), "price":dish_price, "link":"http:__ec2-35-154-42-243.ap-south-1.compute.amazonaws.com_img_db_"+imageName(toTitleCase(dish_name))+".jpg", "category": dish_ing, "course":dish_c, "count":0}];
+  var cate;
+  if(dish_c=="Power Up Main Course") cate="subzi";
+  else if(dish_c=="Full Throttle Starters") cate="starters";
+  else if(dish_c=="Blazing Rolls") cate="roll";
+  else if(dish_c=="Piping Breads") cate="bread";
+  else if(dish_c=="Tank Up On Rice") cate="rice";
+  else if(dish_c=="Top Gear Combos") cate="combo";
+  else if(dish_c=="Speedy Combos") cate="mini_combo";
+  else if(dish_c=="Riveting Desserts") cate="dessert";
+  else if(dish_c=="Super Coolants") cate="beverage";
+  else cate="specials";
+  var dishDet={"v_n": vg, "name":imageName(dish_name.toLowerCase()), "price":dish_price, "link":"http:__ec2-35-154-42-243.ap-south-1.compute.amazonaws.com_img_hero-slider_01.jpg", "base_ing": dish_ing, "course":dish_c, "category":cate};
   dishDet=JSON.stringify(dishDet);
   console.log(dishDet);
   $.ajax({
     type: "GET",
-    url: redisDb+"/add_dish/"+dishDet,
+    url: redisDb+"/add_dish/["+dishDet+"]",
     success: function(data){
       console.log(data);
     },
